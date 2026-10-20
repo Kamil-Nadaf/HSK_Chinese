@@ -1,0 +1,4545 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1a2e">
+<title>HSK Flashcards</title>
+<style>
+:root{--bg:#f5f3ee;--card:#fff;--ink:#1a1a2e;--accent:#c0392b;--muted:#888;--line:#e3ded2;--sticky:#1a1a2e;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;}
+.topbar{position:sticky;top:0;z-index:100;background:var(--sticky);color:#fff;padding:10px 14px 6px;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.topbar h1{font-size:17px;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.topbar .sub{font-size:11px;opacity:.7;margin-bottom:8px;}
+.tabs{display:flex;gap:6px;margin-bottom:2px;}
+.tab{flex:1;text-align:center;padding:9px 0;font-size:13px;font-weight:600;border-radius:8px 8px 0 0;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);border:none;cursor:pointer;}
+.tab.active{background:#fff;color:var(--ink);}
+.search-wrap{padding:10px 14px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:88px;z-index:90;}
+#search{width:100%;padding:10px 14px;font-size:15px;border:1.5px solid var(--line);border-radius:10px;background:#faf8f3;outline:none;}
+#search:focus{border-color:var(--accent);}
+.content{padding:10px 14px 30px;display:none;}
+.content.active{display:block;}
+.sec{background:var(--sticky);color:#fff;padding:8px 14px;font-size:14px;font-weight:600;border-radius:8px;margin:14px 0 8px;position:sticky;top:146px;z-index:80;display:flex;align-items:center;gap:6px;}
+.sec .n{margin-left:auto;font-size:11px;opacity:.7;font-weight:400;}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.card-top{display:flex;align-items:flex-start;gap:12px;}
+.hz{font-family:'Noto Serif CJK SC','Noto Serif CJK JP','Source Han Serif SC',serif;font-size:38px;font-weight:700;line-height:1;color:var(--ink);min-width:50px;text-align:center;}
+.card-meta{flex:1;}
+.py{font-size:15px;color:var(--accent);font-style:italic;margin-bottom:2px;}
+.en{font-size:13.5px;color:#444;}
+.ln{font-size:11px;color:var(--muted);margin-top:2px;}
+.bd{font-size:11.5px;color:#666;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);line-height:1.5;}
+.pat-box{background:#faf8f3;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;margin:10px 0 14px;}
+.pat-title{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:6px;}
+.pat-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.pat-table th{text-align:left;font-size:10px;text-transform:uppercase;color:#999;padding:4px 6px;border-bottom:1.5px solid var(--ink);}
+.pat-table td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top;}
+.pat-table .pyp{color:var(--accent);font-style:italic;}
+.gram-title{font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin:10px 0 6px;}
+.gram-card{background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;}
+.gram-card .gname{font-weight:700;font-size:13px;margin-bottom:2px;}
+.gram-card .grule{font-size:12.5px;color:#444;margin-bottom:2px;}
+.gram-card .gex{font-size:12px;color:#666;font-style:italic;}
+.nores{text-align:center;color:var(--muted);padding:40px 20px;font-size:14px;}
+@media(min-width:640px){.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}.hz{font-size:44px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>🇨🇳 HSK Flashcards</h1>
+  <div class="sub">272 words · Lessons 1–14 · tap tabs to switch view</div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab(this,'cat')">By Category</button>
+    <button class="tab" onclick="switchTab(this,'lesson')">By Lesson</button>
+  </div>
+</div>
+<div class="search-wrap">
+  <input type="text" id="search" placeholder="Search word, pinyin, or meaning..." oninput="doSearch()">
+</div>
+
+<div id="cat" class="content active"><div class="sec">👋 Greetings &amp; Polite Phrases<span class="n">10 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">你好</div>
+    <div class="card-meta">
+      <div class="py">nǐ hǎo</div>
+      <div class="en">hello</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">你(nǐ)=you  ·  好(hǎo)=good</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">你们</div>
+    <div class="card-meta">
+      <div class="py">nǐ men</div>
+      <div class="en">you pl.</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">你(nǐ)=you  ·  们(men)=plural</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">对不起</div>
+    <div class="card-meta">
+      <div class="py">duì bu qǐ</div>
+      <div class="en">sorry</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">对(duì)=correct  ·  不(bù)=not  ·  起(qǐ)=rise</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">没关系</div>
+    <div class="card-meta">
+      <div class="py">méi guān xi</div>
+      <div class="en">it is okay</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">没(méi)=not have  ·  关(guān)=close  ·  系(xì)=connection</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">不好意思</div>
+    <div class="card-meta">
+      <div class="py">bù hǎo yì si</div>
+      <div class="en">excuse me</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">不(bù)=not  ·  好(hǎo)=good  ·  意(yì)=idea  ·  思(sī)=thought</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">谢谢</div>
+    <div class="card-meta">
+      <div class="py">xiè xie</div>
+      <div class="en">thanks</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">谢(xiè)=thank  ·  谢(xiè)=thank</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">谢谢你</div>
+    <div class="card-meta">
+      <div class="py">xiè xie nǐ</div>
+      <div class="en">thank you</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">谢(xiè)=thank  ·  谢(xiè)=thank  ·  你(nǐ)=you</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">不客气</div>
+    <div class="card-meta">
+      <div class="py">bú kè qi</div>
+      <div class="en">you are welcome</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">不(bù)=not  ·  客(kè)=guest  ·  气(qì)=air</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">认识</div>
+    <div class="card-meta">
+      <div class="py">rèn shi</div>
+      <div class="en">to know; to meet</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">认(rèn)=recognize  ·  识(shí)=know</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">高兴</div>
+    <div class="card-meta">
+      <div class="py">gāo xìng</div>
+      <div class="en">happy; glad</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">高(gāo)=tall  ·  兴(xìng)=happy</div>
+</div></div><div class="sec">👫 Pronouns &amp; People<span class="n">10 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">你</div>
+    <div class="card-meta">
+      <div class="py">nǐ</div>
+      <div class="en">you</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">我</div>
+    <div class="card-meta">
+      <div class="py">wǒ</div>
+      <div class="en">I</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">他</div>
+    <div class="card-meta">
+      <div class="py">tā</div>
+      <div class="en">he</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">她</div>
+    <div class="card-meta">
+      <div class="py">tā</div>
+      <div class="en">she</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">谁</div>
+    <div class="card-meta">
+      <div class="py">shéi</div>
+      <div class="en">who</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">人</div>
+    <div class="card-meta">
+      <div class="py">rén</div>
+      <div class="en">person</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">朋友</div>
+    <div class="card-meta">
+      <div class="py">péng you</div>
+      <div class="en">friend</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">朋(péng)=friend  ·  友(yǒu)=friend</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">认识</div>
+    <div class="card-meta">
+      <div class="py">rèn shi</div>
+      <div class="en">to know; to meet</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">认(rèn)=recognize  ·  识(shí)=know</div>
+</div></div><div class="sec">🏫 School &amp; Language Learning<span class="n">19 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">老师</div>
+    <div class="card-meta">
+      <div class="py">lǎo shī</div>
+      <div class="en">teacher</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">老(lǎo)=old  ·  师(shī)=teacher</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">学生</div>
+    <div class="card-meta">
+      <div class="py">xué sheng</div>
+      <div class="en">student</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">学(xué)=learn  ·  生(shēng)=life/student</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">同学</div>
+    <div class="card-meta">
+      <div class="py">tóng xué</div>
+      <div class="en">classmate</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">同(tóng)=same  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">汉语</div>
+    <div class="card-meta">
+      <div class="py">hàn yǔ</div>
+      <div class="en">Chinese</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">汉(hàn)=Han  ·  语(yǔ)=language</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中文</div>
+    <div class="card-meta">
+      <div class="py">zhōng wén</div>
+      <div class="en">Chinese</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  文(wén)=language</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中国</div>
+    <div class="card-meta">
+      <div class="py">zhōng guó</div>
+      <div class="en">China</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">汉字</div>
+    <div class="card-meta">
+      <div class="py">hàn zì</div>
+      <div class="en">character</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">汉(hàn)=Han  ·  字(zì)=character</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">学校</div>
+    <div class="card-meta">
+      <div class="py">xué xiào</div>
+      <div class="en">school</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">学(xué)=learn  ·  校(xiào)=school</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">小学</div>
+    <div class="card-meta">
+      <div class="py">xiǎo xué</div>
+      <div class="en">primary school</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">小(xiǎo)=small  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中学</div>
+    <div class="card-meta">
+      <div class="py">zhōng xué</div>
+      <div class="en">middle school</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">大学</div>
+    <div class="card-meta">
+      <div class="py">dà xué</div>
+      <div class="en">university; college</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">大(dà)=big  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">研究生</div>
+    <div class="card-meta">
+      <div class="py">yán jiū shēng</div>
+      <div class="en">postgraduate</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">研(yán)=research  ·  究(jiū)=study  ·  生(shēng)=life/student</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">读书</div>
+    <div class="card-meta">
+      <div class="py">dú shū</div>
+      <div class="en">study</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">读(dú)=read  ·  书(shū)=book</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">看书</div>
+    <div class="card-meta">
+      <div class="py">kàn shū</div>
+      <div class="en">read</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">看(kàn)=look  ·  书(shū)=book</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">学习</div>
+    <div class="card-meta">
+      <div class="py">xué xí</div>
+      <div class="en">study</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">学(xué)=learn  ·  习(xí)=practice</div>
+</div></div><div class="sec">⚡ Verbs &amp; Actions<span class="n">19 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">是</div>
+    <div class="card-meta">
+      <div class="py">shì</div>
+      <div class="en">is</div>
+      <div class="ln">Lesson 1</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">叫</div>
+    <div class="card-meta">
+      <div class="py">jiào</div>
+      <div class="en">call</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">吃</div>
+    <div class="card-meta">
+      <div class="py">chī</div>
+      <div class="en">eat</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">喝</div>
+    <div class="card-meta">
+      <div class="py">hē</div>
+      <div class="en">drink</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">写</div>
+    <div class="card-meta">
+      <div class="py">xiě</div>
+      <div class="en">write</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">读</div>
+    <div class="card-meta">
+      <div class="py">dú</div>
+      <div class="en">read</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">说</div>
+    <div class="card-meta">
+      <div class="py">shuō</div>
+      <div class="en">speak</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">做</div>
+    <div class="card-meta">
+      <div class="py">zuò</div>
+      <div class="en">make</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">去</div>
+    <div class="card-meta">
+      <div class="py">qù</div>
+      <div class="en">go</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">工作</div>
+    <div class="card-meta">
+      <div class="py">gōng zuò</div>
+      <div class="en">work</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">工(gōng)=work  ·  作(zuò)=do</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">买</div>
+    <div class="card-meta">
+      <div class="py">mǎi</div>
+      <div class="en">buy</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">有</div>
+    <div class="card-meta">
+      <div class="py">yǒu</div>
+      <div class="en">have</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">学习</div>
+    <div class="card-meta">
+      <div class="py">xué xí</div>
+      <div class="en">study</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">学(xué)=learn  ·  习(xí)=practice</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">想</div>
+    <div class="card-meta">
+      <div class="py">xiǎng</div>
+      <div class="en">want</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">坐</div>
+    <div class="card-meta">
+      <div class="py">zuò</div>
+      <div class="en">to take (vehicle); sit</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">来</div>
+    <div class="card-meta">
+      <div class="py">lái</div>
+      <div class="en">to come</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">认识</div>
+    <div class="card-meta">
+      <div class="py">rèn shi</div>
+      <div class="en">to know; to meet</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">认(rèn)=recognize  ·  识(shí)=know</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">听</div>
+    <div class="card-meta">
+      <div class="py">tīng</div>
+      <div class="en">to listen; to hear</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="sec">🌍 Countries &amp; Nationalities<span class="n">14 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">中国</div>
+    <div class="card-meta">
+      <div class="py">zhōng guó</div>
+      <div class="en">China</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">美国</div>
+    <div class="card-meta">
+      <div class="py">měi guó</div>
+      <div class="en">USA</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">美(měi)=beautiful  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">英国</div>
+    <div class="card-meta">
+      <div class="py">yīng guó</div>
+      <div class="en">UK</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">英(yīng)=hero  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">德国</div>
+    <div class="card-meta">
+      <div class="py">dé guó</div>
+      <div class="en">Germany</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">德(dé)=virtue  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">法国</div>
+    <div class="card-meta">
+      <div class="py">fǎ guó</div>
+      <div class="en">France</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">法(fǎ)=law  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">巴西</div>
+    <div class="card-meta">
+      <div class="py">bā xī</div>
+      <div class="en">Brazil</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">巴(sound)  ·  西(xī)=west</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">西班牙</div>
+    <div class="card-meta">
+      <div class="py">xī bān yá</div>
+      <div class="en">Spain</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">西(xī)=west  ·  班  ·  牙(sound)</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">墨西哥</div>
+    <div class="card-meta">
+      <div class="py">mò xī gē</div>
+      <div class="en">Mexico</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">墨(sound)  ·  西(xī)=west  ·  哥(gē)=elder brother</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">印度</div>
+    <div class="card-meta">
+      <div class="py">yìn dù</div>
+      <div class="en">India</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">印(sound)  ·  度(sound)</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">加拿大</div>
+    <div class="card-meta">
+      <div class="py">jiā ná dà</div>
+      <div class="en">Canada</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">加(jiā)=add  ·  拿(ná)=take  ·  大(dà)=big</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">葡萄牙</div>
+    <div class="card-meta">
+      <div class="py">pú táo yá</div>
+      <div class="en">Portugal</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">葡(sound)  ·  萄(sound)  ·  牙(sound)</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外国人</div>
+    <div class="card-meta">
+      <div class="py">wài guó rén</div>
+      <div class="en">foreigner</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  国(guó)=country  ·  人(rén)=person</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">哪国人</div>
+    <div class="card-meta">
+      <div class="py">nǎ guó rén</div>
+      <div class="en">which nationality</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">哪(nǎ)=which  ·  国(guó)=country  ·  人(rén)=person</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">老外</div>
+    <div class="card-meta">
+      <div class="py">lǎo wài</div>
+      <div class="en">foreigner</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">老(lǎo)=old  ·  外(wài)=outside</div>
+</div></div><div class="sec">📍 Places &amp; Directions<span class="n">16 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">学校</div>
+    <div class="card-meta">
+      <div class="py">xué xiào</div>
+      <div class="en">school</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">学(xué)=learn  ·  校(xiào)=school</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">商店</div>
+    <div class="card-meta">
+      <div class="py">shāng diàn</div>
+      <div class="en">shop</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">商(shāng)=commerce  ·  店(diàn)=shop</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">医院</div>
+    <div class="card-meta">
+      <div class="py">yī yuàn</div>
+      <div class="en">hospital</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">医(yī)=medicine  ·  院(yuàn)=courtyard</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">这儿</div>
+    <div class="card-meta">
+      <div class="py">zhèr</div>
+      <div class="en">here</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">这(zhè)=this  ·  儿(ér)=child</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">那儿</div>
+    <div class="card-meta">
+      <div class="py">nàr</div>
+      <div class="en">there</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">那(nà)=that  ·  儿(ér)=child</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">哪儿</div>
+    <div class="card-meta">
+      <div class="py">nǎr</div>
+      <div class="en">where</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">哪(nǎ)=which  ·  儿(ér)=child</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">里面</div>
+    <div class="card-meta">
+      <div class="py">lǐ mian</div>
+      <div class="en">inside</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">里(lǐ)=inside  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外面</div>
+    <div class="card-meta">
+      <div class="py">wài mian</div>
+      <div class="en">outside</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">上面</div>
+    <div class="card-meta">
+      <div class="py">shàng mian</div>
+      <div class="en">above</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">上(shàng)=up  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">下面</div>
+    <div class="card-meta">
+      <div class="py">xià mian</div>
+      <div class="en">below</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">下(xià)=down  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">左面</div>
+    <div class="card-meta">
+      <div class="py">zuǒ mian</div>
+      <div class="en">left</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">左(zuǒ)=left  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">右面</div>
+    <div class="card-meta">
+      <div class="py">yòu mian</div>
+      <div class="en">right</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">右(yòu)=right  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">前面</div>
+    <div class="card-meta">
+      <div class="py">qián mian</div>
+      <div class="en">front</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">前(qián)=before  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">后面</div>
+    <div class="card-meta">
+      <div class="py">hòu mian</div>
+      <div class="en">behind</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">后(hòu)=behind  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外国</div>
+    <div class="card-meta">
+      <div class="py">wài guó</div>
+      <div class="en">foreign</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">大学</div>
+    <div class="card-meta">
+      <div class="py">dà xué</div>
+      <div class="en">university; college</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">大(dà)=big  ·  学(xué)=learn</div>
+</div></div><div class="sec">👨‍👩‍👧‍👦 Family<span class="n">13 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">家</div>
+    <div class="card-meta">
+      <div class="py">jiā</div>
+      <div class="en">home</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">爸爸</div>
+    <div class="card-meta">
+      <div class="py">bà ba</div>
+      <div class="en">dad</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">爸  ·  爸</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">儿子</div>
+    <div class="card-meta">
+      <div class="py">ér zi</div>
+      <div class="en">son</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">儿(ér)=child  ·  子(zi)=suffix</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">女儿</div>
+    <div class="card-meta">
+      <div class="py">nǚ'ér</div>
+      <div class="en">daughter</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">女(nǚ)=female  ·  儿(ér)=child</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">哥哥</div>
+    <div class="card-meta">
+      <div class="py">gē ge</div>
+      <div class="en">older brother</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">哥(gē)=elder brother  ·  哥(gē)=elder brother</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">姐姐</div>
+    <div class="card-meta">
+      <div class="py">jiě jie</div>
+      <div class="en">older sister</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">姐(jiě)=elder sister  ·  姐(jiě)=elder sister</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">弟弟</div>
+    <div class="card-meta">
+      <div class="py">dì di</div>
+      <div class="en">younger brother</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">弟(dì)=younger brother  ·  弟(dì)=younger brother</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">妹妹</div>
+    <div class="card-meta">
+      <div class="py">mèi mei</div>
+      <div class="en">younger sister</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">妹(mèi)=younger sister  ·  妹(mèi)=younger sister</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">爷爷</div>
+    <div class="card-meta">
+      <div class="py">yé ye</div>
+      <div class="en">grandpa</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">爷(yé)=grandpa  ·  爷(yé)=grandpa</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">奶奶</div>
+    <div class="card-meta">
+      <div class="py">nǎi nai</div>
+      <div class="en">grandma</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">奶(nǎi)=granny  ·  奶(nǎi)=granny</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外公</div>
+    <div class="card-meta">
+      <div class="py">wài gōng</div>
+      <div class="en">grandpa m.</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  公(gōng)=grandfather</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外婆</div>
+    <div class="card-meta">
+      <div class="py">wài pó</div>
+      <div class="en">grandma m.</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  婆(pó)=granny</div>
+</div></div><div class="sec">🔢 Numbers &amp; Quantities<span class="n">18 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">一</div>
+    <div class="card-meta">
+      <div class="py">yī</div>
+      <div class="en">one</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">二</div>
+    <div class="card-meta">
+      <div class="py">èr</div>
+      <div class="en">two</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">三</div>
+    <div class="card-meta">
+      <div class="py">sān</div>
+      <div class="en">three</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">四</div>
+    <div class="card-meta">
+      <div class="py">sì</div>
+      <div class="en">four</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">五</div>
+    <div class="card-meta">
+      <div class="py">wǔ</div>
+      <div class="en">five</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">六</div>
+    <div class="card-meta">
+      <div class="py">liù</div>
+      <div class="en">six</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">七</div>
+    <div class="card-meta">
+      <div class="py">qī</div>
+      <div class="en">seven</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">八</div>
+    <div class="card-meta">
+      <div class="py">bā</div>
+      <div class="en">eight</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">九</div>
+    <div class="card-meta">
+      <div class="py">jiǔ</div>
+      <div class="en">nine</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">十</div>
+    <div class="card-meta">
+      <div class="py">shí</div>
+      <div class="en">ten</div>
+      <div class="ln">Lesson 2</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">百</div>
+    <div class="card-meta">
+      <div class="py">bǎi</div>
+      <div class="en">hundred</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">零</div>
+    <div class="card-meta">
+      <div class="py">líng</div>
+      <div class="en">zero</div>
+      <div class="ln">Lesson 3</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">多少</div>
+    <div class="card-meta">
+      <div class="py">duō shǎo</div>
+      <div class="en">how many</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">多(duō)=many  ·  少(shǎo)=few</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">几</div>
+    <div class="card-meta">
+      <div class="py">jǐ</div>
+      <div class="en">how many</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">个</div>
+    <div class="card-meta">
+      <div class="py">gè</div>
+      <div class="en">MW</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">次</div>
+    <div class="card-meta">
+      <div class="py">cì</div>
+      <div class="en">time</div>
+      <div class="ln">Lesson 11</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">岁</div>
+    <div class="card-meta">
+      <div class="py">suì</div>
+      <div class="en">years old</div>
+      <div class="ln">Lesson 4</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="sec">🕐 Time &amp; Calendar<span class="n">20 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">年</div>
+    <div class="card-meta">
+      <div class="py">nián</div>
+      <div class="en">year</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">月</div>
+    <div class="card-meta">
+      <div class="py">yuè</div>
+      <div class="en">month</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">天</div>
+    <div class="card-meta">
+      <div class="py">tiān</div>
+      <div class="en">day</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">今天</div>
+    <div class="card-meta">
+      <div class="py">jīn tiān</div>
+      <div class="en">today</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">今(jīn)=now  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">昨天</div>
+    <div class="card-meta">
+      <div class="py">zuó tiān</div>
+      <div class="en">yesterday</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">昨(zuó)=past  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">明天</div>
+    <div class="card-meta">
+      <div class="py">míng tiān</div>
+      <div class="en">tomorrow</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">明(míng)=bright/next  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">前天</div>
+    <div class="card-meta">
+      <div class="py">qián tiān</div>
+      <div class="en">day before yest.</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">前(qián)=before  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">后天</div>
+    <div class="card-meta">
+      <div class="py">hòu tiān</div>
+      <div class="en">day after tom.</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">后(hòu)=behind  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">早上</div>
+    <div class="card-meta">
+      <div class="py">zǎo shang</div>
+      <div class="en">morning</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">早(zǎo)=morning  ·  上(shàng)=up</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">上午</div>
+    <div class="card-meta">
+      <div class="py">shàng wǔ</div>
+      <div class="en">morning</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">上(shàng)=up  ·  午(wǔ)=noon</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中午</div>
+    <div class="card-meta">
+      <div class="py">zhōng wǔ</div>
+      <div class="en">noon</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  午(wǔ)=noon</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">下午</div>
+    <div class="card-meta">
+      <div class="py">xià wǔ</div>
+      <div class="en">afternoon</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">下(xià)=down  ·  午(wǔ)=noon</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">晚上</div>
+    <div class="card-meta">
+      <div class="py">wǎn shang</div>
+      <div class="en">evening</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">晚(wǎn)=evening  ·  上(shàng)=up</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">夜里</div>
+    <div class="card-meta">
+      <div class="py">yè lǐ</div>
+      <div class="en">night</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">夜(yè)=night  ·  里(lǐ)=inside</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">上个月</div>
+    <div class="card-meta">
+      <div class="py">shàng gè yuè</div>
+      <div class="en">last month</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">上(shàng)=up  ·  个(gè)=MW  ·  月(yuè)=moon/month</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">这个月</div>
+    <div class="card-meta">
+      <div class="py">zhè ge yuè</div>
+      <div class="en">this month</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">这(zhè)=this  ·  个(gè)=MW  ·  月(yuè)=moon/month</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">下个月</div>
+    <div class="card-meta">
+      <div class="py">xià gè yuè</div>
+      <div class="en">next month</div>
+      <div class="ln">Lesson 6</div>
+    </div>
+  </div>
+  <div class="bd">下(xià)=down  ·  个(gè)=MW  ·  月(yuè)=moon/month</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">时候</div>
+    <div class="card-meta">
+      <div class="py">shí hou</div>
+      <div class="en">time</div>
+      <div class="ln">Lesson 12</div>
+    </div>
+  </div>
+  <div class="bd">时(shí)=time  ·  候(hòu)=wait</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">现在</div>
+    <div class="card-meta">
+      <div class="py">xiàn zài</div>
+      <div class="en">now</div>
+      <div class="ln">Lesson 12</div>
+    </div>
+  </div>
+  <div class="bd">现(xiàn)=now  ·  在(zài)=at</div>
+</div></div><div class="sec">🍽️ Food &amp; Drink<span class="n">8 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">菜</div>
+    <div class="card-meta">
+      <div class="py">cài</div>
+      <div class="en">dish</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">茶</div>
+    <div class="card-meta">
+      <div class="py">chá</div>
+      <div class="en">tea</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">米饭</div>
+    <div class="card-meta">
+      <div class="py">mǐ fàn</div>
+      <div class="en">rice</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">米(mǐ)=rice  ·  饭(fàn)=meal</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">好吃</div>
+    <div class="card-meta">
+      <div class="py">hǎo chī</div>
+      <div class="en">delicious</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">好(hǎo)=good  ·  吃(chī)=eat</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">吃</div>
+    <div class="card-meta">
+      <div class="py">chī</div>
+      <div class="en">eat</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">喝</div>
+    <div class="card-meta">
+      <div class="py">hē</div>
+      <div class="en">drink</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">些</div>
+    <div class="card-meta">
+      <div class="py">xiē</div>
+      <div class="en">some</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="sec">🛒 Shopping &amp; Daily Objects<span class="n">19 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">商店</div>
+    <div class="card-meta">
+      <div class="py">shāng diàn</div>
+      <div class="en">shop</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">商(shāng)=commerce  ·  店(diàn)=shop</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">买</div>
+    <div class="card-meta">
+      <div class="py">mǎi</div>
+      <div class="en">buy</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">杯</div>
+    <div class="card-meta">
+      <div class="py">bēi</div>
+      <div class="en">cup</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">个</div>
+    <div class="card-meta">
+      <div class="py">gè</div>
+      <div class="en">MW</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">多少钱</div>
+    <div class="card-meta">
+      <div class="py">duō shao qián</div>
+      <div class="en">how much</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">多(duō)=many  ·  少(shǎo)=few  ·  钱(qián)=money</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">钱</div>
+    <div class="card-meta">
+      <div class="py">qián</div>
+      <div class="en">money</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">块</div>
+    <div class="card-meta">
+      <div class="py">kuài</div>
+      <div class="en">yuan</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">毛</div>
+    <div class="card-meta">
+      <div class="py">máo</div>
+      <div class="en">jiao</div>
+      <div class="ln">Lesson 7</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">椅子</div>
+    <div class="card-meta">
+      <div class="py">yǐ zi</div>
+      <div class="en">chair</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">椅(yǐ)=chair  ·  子(zi)=suffix</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">桌子</div>
+    <div class="card-meta">
+      <div class="py">zhuō zi</div>
+      <div class="en">table</div>
+      <div class="ln">Lesson 9</div>
+    </div>
+  </div>
+  <div class="bd">桌(zhuō)=table  ·  子(zi)=suffix</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">电脑</div>
+    <div class="card-meta">
+      <div class="py">diàn nǎo</div>
+      <div class="en">computer</div>
+      <div class="ln">Lesson 9</div>
+    </div>
+  </div>
+  <div class="bd">电(diàn)=electric  ·  脑(nǎo)=brain</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">本</div>
+    <div class="card-meta">
+      <div class="py">běn</div>
+      <div class="en">MW book</div>
+      <div class="ln">Lesson 9</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">手机</div>
+    <div class="card-meta">
+      <div class="py">shǒu jī</div>
+      <div class="en">mobile</div>
+      <div class="ln">Lesson 9</div>
+    </div>
+  </div>
+  <div class="bd">手(shǒu)=hand  ·  机(jī)=machine</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">平板</div>
+    <div class="card-meta">
+      <div class="py">píng bǎn</div>
+      <div class="en">tablet</div>
+      <div class="ln">Lesson 9</div>
+    </div>
+  </div>
+  <div class="bd">平(píng)=flat  ·  板(bǎn)=board</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">电话</div>
+    <div class="card-meta">
+      <div class="py">diàn huà</div>
+      <div class="en">phone</div>
+      <div class="ln">Lesson 9</div>
+    </div>
+  </div>
+  <div class="bd">电(diàn)=electric  ·  话(huà)=speech</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">电视</div>
+    <div class="card-meta">
+      <div class="py">diàn shì</div>
+      <div class="en">TV</div>
+      <div class="ln">Lesson 9</div>
+    </div>
+  </div>
+  <div class="bd">电(diàn)=electric  ·  视(shì)=vision</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">出租车</div>
+    <div class="card-meta">
+      <div class="py">chū zū chē</div>
+      <div class="en">taxi</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">出(chū)=go out  ·  租(zū)=rent  ·  车(chē)=vehicle</div>
+</div></div><div class="sec">🐶 Animals &amp; Nature<span class="n">3 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">狗</div>
+    <div class="card-meta">
+      <div class="py">gǒu</div>
+      <div class="en">dog</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">小猫</div>
+    <div class="card-meta">
+      <div class="py">xiǎo māo</div>
+      <div class="en">kitten</div>
+      <div class="ln">Lesson 8</div>
+    </div>
+  </div>
+  <div class="bd">小(xiǎo)=small  ·  猫(māo)=cat</div>
+</div></div><div class="sec">🌤️ Weather &amp; Body<span class="n">9 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">天气</div>
+    <div class="card-meta">
+      <div class="py">tiān qì</div>
+      <div class="en">weather</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">天(tiān)=sky/day  ·  气(qì)=air</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">身体</div>
+    <div class="card-meta">
+      <div class="py">shēn tǐ</div>
+      <div class="en">body</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">身(shēn)=body  ·  体(tǐ)=body</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">冷</div>
+    <div class="card-meta">
+      <div class="py">lěng</div>
+      <div class="en">cold</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">热</div>
+    <div class="card-meta">
+      <div class="py">rè</div>
+      <div class="en">hot</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">雨</div>
+    <div class="card-meta">
+      <div class="py">yǔ</div>
+      <div class="en">rain</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">睡觉</div>
+    <div class="card-meta">
+      <div class="py">shuì jiào</div>
+      <div class="en">sleep</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">睡(shuì)=sleep  ·  觉(jué)=feel</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">喜欢</div>
+    <div class="card-meta">
+      <div class="py">xǐ huan</div>
+      <div class="en">like</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">喜(xǐ)=like  ·  欢(huān)=happy</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">爱</div>
+    <div class="card-meta">
+      <div class="py">ài</div>
+      <div class="en">love</div>
+      <div class="ln">Lesson 10</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">高兴</div>
+    <div class="card-meta">
+      <div class="py">gāo xìng</div>
+      <div class="en">happy; glad</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">高(gāo)=tall  ·  兴(xìng)=happy</div>
+</div></div><div class="sec">🚕 Transport &amp; Travel<span class="n">4 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">飞机</div>
+    <div class="card-meta">
+      <div class="py">fēi jī</div>
+      <div class="en">plane; airplane</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">飞(fēi)=fly  ·  机(jī)=machine</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">坐</div>
+    <div class="card-meta">
+      <div class="py">zuò</div>
+      <div class="en">to take (vehicle); sit</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">出租车</div>
+    <div class="card-meta">
+      <div class="py">chū zū chē</div>
+      <div class="en">taxi</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">出(chū)=go out  ·  租(zū)=rent  ·  车(chē)=vehicle</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">来</div>
+    <div class="card-meta">
+      <div class="py">lái</div>
+      <div class="en">to come</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="sec">🔗 Connectors &amp; Grammar<span class="n">3 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">和</div>
+    <div class="card-meta">
+      <div class="py">hé</div>
+      <div class="en">and</div>
+      <div class="ln">Lesson 9</div>
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">怎么</div>
+    <div class="card-meta">
+      <div class="py">zěn me</div>
+      <div class="en">how</div>
+      <div class="ln">Lesson 5</div>
+    </div>
+  </div>
+  <div class="bd">怎(zěn)=how  ·  么(me)=what</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">一起</div>
+    <div class="card-meta">
+      <div class="py">yì qǐ</div>
+      <div class="en">together</div>
+      <div class="ln">Lesson 14</div>
+    </div>
+  </div>
+  <div class="bd">一(yī)=one  ·  起(qǐ)=rise</div>
+</div></div></div>
+<div id="lesson" class="content"><div class="gram-title">⚡ Grammar Quick-Fire</div><div class="gram-card"><div class="gname">名词谓语句</div><div class="grule">No 是 needed for age/date/nationality</div><div class="gex">我二十岁。/ 今天星期三。</div></div><div class="gram-card"><div class="gname">会 vs 能</div><div class="grule">会 = learned skill · 能 = innate ability / permission</div><div class="gex">我会说汉语。 / 我能坐这儿吗？</div></div><div class="gram-card"><div class="gname">有 / 没有</div><div class="grule">Place + 有 + sth = there is/are · 没有 drops numbers</div><div class="gex">桌子上有一本书。</div></div><div class="gram-card"><div class="gname">两 vs 二</div><div class="grule">两 + measure word · 二 in numbers</div><div class="gex">两个人 (not 二个人)</div></div><div class="gram-card"><div class="gname">怎么 + V</div><div class="grule">how to do something</div><div class="gex">这个字怎么写？</div></div><div class="gram-card"><div class="gname">在 + place + V</div><div class="grule">doing something at a place</div><div class="gex">我在学校学习汉语。</div></div><div class="gram-card"><div class="gname">方位词</div><div class="grule">上 下 左 右 前 后 里 外 + 面/边 (+ 的 + noun)</div><div class="gex">下面的书 = the book below</div></div><div class="gram-card"><div class="gname">多少 / 几</div><div class="grule">多少 = any number · 几 = small number (&lt;10)</div><div class="gex">多少钱？= how much</div></div><div class="gram-card"><div class="gname">了 / 呢</div><div class="grule">了 = completed/change · 呢 = and…? / where is…?</div><div class="gex">你呢？= How about you?</div></div><div class="gram-card"><div class="gname">不 tone change</div><div class="grule">不 + 4th tone → bú (不是, 不会, 不好意思)</div><div class="gex">是 shì · 在 zài · 会 huì</div></div><div class="gram-card"><div class="gname">因为…所以…</div><div class="grule">因为 + reason, 所以 + result</div><div class="gex">因为太热了，所以我不想去。</div></div><div class="gram-card"><div class="gname">比</div><div class="grule">A 比 B + adj = A is more adj than B</div><div class="gex">他比我高。</div></div><div class="gram-card"><div class="gname">还是</div><div class="grule">还是 = or (question) · 或者 = or (statement)</div><div class="gex">你要茶还是咖啡？</div></div><div class="gram-card"><div class="gname">是……的</div><div class="grule">Emphasize time/place/manner of past action · already completed</div><div class="gex">我是坐飞机来的。/ 你是怎么来的？</div></div><div class="gram-card"><div class="gname">认识</div><div class="grule">To know/meet somebody for the first time</div><div class="gex">认识你很高兴。</div></div><div class="gram-card"><div class="gname">一起</div><div class="grule">Together · placed before verbs</div><div class="gex">我们一起去商店。</div></div><div class="sec">📘 Lesson 1<span class="n">25 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">你好</div>
+    <div class="card-meta">
+      <div class="py">nǐ hǎo</div>
+      <div class="en">hello</div>
+      
+    </div>
+  </div>
+  <div class="bd">你(nǐ)=you  ·  好(hǎo)=good</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">你</div>
+    <div class="card-meta">
+      <div class="py">nǐ</div>
+      <div class="en">you</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">你们</div>
+    <div class="card-meta">
+      <div class="py">nǐ men</div>
+      <div class="en">you pl.</div>
+      
+    </div>
+  </div>
+  <div class="bd">你(nǐ)=you  ·  们(men)=plural</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">你的</div>
+    <div class="card-meta">
+      <div class="py">nǐ de</div>
+      <div class="en">your</div>
+      
+    </div>
+  </div>
+  <div class="bd">你(nǐ)=you  ·  的(de)=possessive</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">我</div>
+    <div class="card-meta">
+      <div class="py">wǒ</div>
+      <div class="en">I</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">我们</div>
+    <div class="card-meta">
+      <div class="py">wǒ men</div>
+      <div class="en">we</div>
+      
+    </div>
+  </div>
+  <div class="bd">我(wǒ)=I/me  ·  们(men)=plural</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">我的</div>
+    <div class="card-meta">
+      <div class="py">wǒ de</div>
+      <div class="en">my</div>
+      
+    </div>
+  </div>
+  <div class="bd">我(wǒ)=I/me  ·  的(de)=possessive</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">他</div>
+    <div class="card-meta">
+      <div class="py">tā</div>
+      <div class="en">he</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">他们</div>
+    <div class="card-meta">
+      <div class="py">tā men</div>
+      <div class="en">they m.</div>
+      
+    </div>
+  </div>
+  <div class="bd">他(tā)=he  ·  们(men)=plural</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">他的</div>
+    <div class="card-meta">
+      <div class="py">tā de</div>
+      <div class="en">his</div>
+      
+    </div>
+  </div>
+  <div class="bd">他(tā)=he  ·  的(de)=possessive</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">她</div>
+    <div class="card-meta">
+      <div class="py">tā</div>
+      <div class="en">she</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">她们</div>
+    <div class="card-meta">
+      <div class="py">tā men</div>
+      <div class="en">they f.</div>
+      
+    </div>
+  </div>
+  <div class="bd">她(tā)=she  ·  们(men)=plural</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">她的</div>
+    <div class="card-meta">
+      <div class="py">tā de</div>
+      <div class="en">her</div>
+      
+    </div>
+  </div>
+  <div class="bd">她(tā)=she  ·  的(de)=possessive</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">对不起</div>
+    <div class="card-meta">
+      <div class="py">duì bu qǐ</div>
+      <div class="en">sorry</div>
+      
+    </div>
+  </div>
+  <div class="bd">对(duì)=correct  ·  不(bù)=not  ·  起(qǐ)=rise</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">不好意思</div>
+    <div class="card-meta">
+      <div class="py">bù hǎo yì si</div>
+      <div class="en">excuse me</div>
+      
+    </div>
+  </div>
+  <div class="bd">不(bù)=not  ·  好(hǎo)=good  ·  意(yì)=idea  ·  思(sī)=thought</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">没关系</div>
+    <div class="card-meta">
+      <div class="py">méi guān xi</div>
+      <div class="en">it is okay</div>
+      
+    </div>
+  </div>
+  <div class="bd">没(méi)=not have  ·  关(guān)=close  ·  系(xì)=connection</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">谢谢</div>
+    <div class="card-meta">
+      <div class="py">xiè xie</div>
+      <div class="en">thanks</div>
+      
+    </div>
+  </div>
+  <div class="bd">谢(xiè)=thank  ·  谢(xiè)=thank</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">谢谢你</div>
+    <div class="card-meta">
+      <div class="py">xiè xie nǐ</div>
+      <div class="en">thank you</div>
+      
+    </div>
+  </div>
+  <div class="bd">谢(xiè)=thank  ·  谢(xiè)=thank  ·  你(nǐ)=you</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">不客气</div>
+    <div class="card-meta">
+      <div class="py">bú kè qi</div>
+      <div class="en">you are welcome</div>
+      
+    </div>
+  </div>
+  <div class="bd">不(bù)=not  ·  客(kè)=guest  ·  气(qì)=air</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">老师</div>
+    <div class="card-meta">
+      <div class="py">lǎo shī</div>
+      <div class="en">teacher</div>
+      
+    </div>
+  </div>
+  <div class="bd">老(lǎo)=old  ·  师(shī)=teacher</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">学生</div>
+    <div class="card-meta">
+      <div class="py">xué sheng</div>
+      <div class="en">student</div>
+      
+    </div>
+  </div>
+  <div class="bd">学(xué)=learn  ·  生(shēng)=life/student</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">同学</div>
+    <div class="card-meta">
+      <div class="py">tóng xué</div>
+      <div class="en">classmate</div>
+      
+    </div>
+  </div>
+  <div class="bd">同(tóng)=same  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">是</div>
+    <div class="card-meta">
+      <div class="py">shì</div>
+      <div class="en">is</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">不是</div>
+    <div class="card-meta">
+      <div class="py">bú shì</div>
+      <div class="en">is not</div>
+      
+    </div>
+  </div>
+  <div class="bd">不(bù)=not  ·  是</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">名字</div>
+    <div class="card-meta">
+      <div class="py">míng zi</div>
+      <div class="en">name</div>
+      
+    </div>
+  </div>
+  <div class="bd">名(míng)=name  ·  字(zì)=character</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>你是学生吗？</b></td><td class='pyp'>Nǐ shì xuésheng ma?</td><td>Are you a student?</td></tr><tr><td><b>我不是学生。</b></td><td class='pyp'>Wǒ bú shì xuésheng.</td><td>I am not a student.</td></tr><tr><td><b>你的名字是什么？</b></td><td class='pyp'>Nǐ de míngzi shì shénme?</td><td>What is your name?</td></tr></table></div><div class="sec">📘 Lesson 2<span class="n">19 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">中文</div>
+    <div class="card-meta">
+      <div class="py">zhōng wén</div>
+      <div class="en">Chinese</div>
+      
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  文(wén)=language</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">汉语</div>
+    <div class="card-meta">
+      <div class="py">hàn yǔ</div>
+      <div class="en">Chinese</div>
+      
+    </div>
+  </div>
+  <div class="bd">汉(hàn)=Han  ·  语(yǔ)=language</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中国</div>
+    <div class="card-meta">
+      <div class="py">zhōng guó</div>
+      <div class="en">China</div>
+      
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">不好</div>
+    <div class="card-meta">
+      <div class="py">bù hǎo</div>
+      <div class="en">not good</div>
+      
+    </div>
+  </div>
+  <div class="bd">不(bù)=not  ·  好(hǎo)=good</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">很</div>
+    <div class="card-meta">
+      <div class="py">hěn</div>
+      <div class="en">very</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">您</div>
+    <div class="card-meta">
+      <div class="py">nín</div>
+      <div class="en">you polite</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">心</div>
+    <div class="card-meta">
+      <div class="py">xīn</div>
+      <div class="en">heart</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">叫</div>
+    <div class="card-meta">
+      <div class="py">jiào</div>
+      <div class="en">call</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">再见</div>
+    <div class="card-meta">
+      <div class="py">zài jiàn</div>
+      <div class="en">goodbye</div>
+      
+    </div>
+  </div>
+  <div class="bd">再(zài)=again  ·  见(jiàn)=see</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">一</div>
+    <div class="card-meta">
+      <div class="py">yī</div>
+      <div class="en">one</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">二</div>
+    <div class="card-meta">
+      <div class="py">èr</div>
+      <div class="en">two</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">三</div>
+    <div class="card-meta">
+      <div class="py">sān</div>
+      <div class="en">three</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">六</div>
+    <div class="card-meta">
+      <div class="py">liù</div>
+      <div class="en">six</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">八</div>
+    <div class="card-meta">
+      <div class="py">bā</div>
+      <div class="en">eight</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">十</div>
+    <div class="card-meta">
+      <div class="py">shí</div>
+      <div class="en">ten</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">口</div>
+    <div class="card-meta">
+      <div class="py">kǒu</div>
+      <div class="en">mouth</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">见</div>
+    <div class="card-meta">
+      <div class="py">jiàn</div>
+      <div class="en">see</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">小</div>
+    <div class="card-meta">
+      <div class="py">xiǎo</div>
+      <div class="en">small</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">山</div>
+    <div class="card-meta">
+      <div class="py">shān</div>
+      <div class="en">mountain</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>你好吗？</b></td><td class='pyp'>Nǐ hǎo ma?</td><td>How are you?</td></tr><tr><td><b>我很好。</b></td><td class='pyp'>Wǒ hěn hǎo.</td><td>I am very well.</td></tr><tr><td><b>你叫什么（名字）？</b></td><td class='pyp'>Nǐ jiào shénme (míngzi)?</td><td>What is your name?</td></tr></table></div><div class="sec">📘 Lesson 3<span class="n">24 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">中国</div>
+    <div class="card-meta">
+      <div class="py">zhōng guó</div>
+      <div class="en">China</div>
+      
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">美国</div>
+    <div class="card-meta">
+      <div class="py">měi guó</div>
+      <div class="en">USA</div>
+      
+    </div>
+  </div>
+  <div class="bd">美(měi)=beautiful  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">英国</div>
+    <div class="card-meta">
+      <div class="py">yīng guó</div>
+      <div class="en">UK</div>
+      
+    </div>
+  </div>
+  <div class="bd">英(yīng)=hero  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">德国</div>
+    <div class="card-meta">
+      <div class="py">dé guó</div>
+      <div class="en">Germany</div>
+      
+    </div>
+  </div>
+  <div class="bd">德(dé)=virtue  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">法国</div>
+    <div class="card-meta">
+      <div class="py">fǎ guó</div>
+      <div class="en">France</div>
+      
+    </div>
+  </div>
+  <div class="bd">法(fǎ)=law  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">巴西</div>
+    <div class="card-meta">
+      <div class="py">bā xī</div>
+      <div class="en">Brazil</div>
+      
+    </div>
+  </div>
+  <div class="bd">巴(sound)  ·  西(xī)=west</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">西班牙</div>
+    <div class="card-meta">
+      <div class="py">xī bān yá</div>
+      <div class="en">Spain</div>
+      
+    </div>
+  </div>
+  <div class="bd">西(xī)=west  ·  班  ·  牙(sound)</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">墨西哥</div>
+    <div class="card-meta">
+      <div class="py">mò xī gē</div>
+      <div class="en">Mexico</div>
+      
+    </div>
+  </div>
+  <div class="bd">墨(sound)  ·  西(xī)=west  ·  哥(gē)=elder brother</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">印度</div>
+    <div class="card-meta">
+      <div class="py">yìn dù</div>
+      <div class="en">India</div>
+      
+    </div>
+  </div>
+  <div class="bd">印(sound)  ·  度(sound)</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">加拿大</div>
+    <div class="card-meta">
+      <div class="py">jiā ná dà</div>
+      <div class="en">Canada</div>
+      
+    </div>
+  </div>
+  <div class="bd">加(jiā)=add  ·  拿(ná)=take  ·  大(dà)=big</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">葡萄牙</div>
+    <div class="card-meta">
+      <div class="py">pú táo yá</div>
+      <div class="en">Portugal</div>
+      
+    </div>
+  </div>
+  <div class="bd">葡(sound)  ·  萄(sound)  ·  牙(sound)</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外国人</div>
+    <div class="card-meta">
+      <div class="py">wài guó rén</div>
+      <div class="en">foreigner</div>
+      
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  国(guó)=country  ·  人(rén)=person</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">哪国人</div>
+    <div class="card-meta">
+      <div class="py">nǎ guó rén</div>
+      <div class="en">which nationality</div>
+      
+    </div>
+  </div>
+  <div class="bd">哪(nǎ)=which  ·  国(guó)=country  ·  人(rén)=person</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">零</div>
+    <div class="card-meta">
+      <div class="py">líng</div>
+      <div class="en">zero</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">四</div>
+    <div class="card-meta">
+      <div class="py">sì</div>
+      <div class="en">four</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">五</div>
+    <div class="card-meta">
+      <div class="py">wǔ</div>
+      <div class="en">five</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">七</div>
+    <div class="card-meta">
+      <div class="py">qī</div>
+      <div class="en">seven</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">九</div>
+    <div class="card-meta">
+      <div class="py">jiǔ</div>
+      <div class="en">nine</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">百</div>
+    <div class="card-meta">
+      <div class="py">bǎi</div>
+      <div class="en">hundred</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">谁</div>
+    <div class="card-meta">
+      <div class="py">shéi</div>
+      <div class="en">who</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">朋友</div>
+    <div class="card-meta">
+      <div class="py">péng you</div>
+      <div class="en">friend</div>
+      
+    </div>
+  </div>
+  <div class="bd">朋(péng)=friend  ·  友(yǒu)=friend</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">人</div>
+    <div class="card-meta">
+      <div class="py">rén</div>
+      <div class="en">person</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中</div>
+    <div class="card-meta">
+      <div class="py">zhōng</div>
+      <div class="en">middle</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">月</div>
+    <div class="card-meta">
+      <div class="py">yuè</div>
+      <div class="en">month</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>你是哪国人？</b></td><td class='pyp'>Nǐ shì nǎ guó rén?</td><td>Which country are you from?</td></tr><tr><td><b>我是……人。</b></td><td class='pyp'>Wǒ shì …… rén.</td><td>I am …… (nationality).</td></tr><tr><td><b>他是谁？</b></td><td class='pyp'>Tā shì shéi?</td><td>Who is he?</td></tr></table></div><div class="sec">📘 Lesson 4<span class="n">25 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">女儿</div>
+    <div class="card-meta">
+      <div class="py">nǚ'ér</div>
+      <div class="en">daughter</div>
+      
+    </div>
+  </div>
+  <div class="bd">女(nǚ)=female  ·  儿(ér)=child</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">儿子</div>
+    <div class="card-meta">
+      <div class="py">ér zi</div>
+      <div class="en">son</div>
+      
+    </div>
+  </div>
+  <div class="bd">儿(ér)=child  ·  子(zi)=suffix</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">奶奶</div>
+    <div class="card-meta">
+      <div class="py">nǎi nai</div>
+      <div class="en">grandma</div>
+      
+    </div>
+  </div>
+  <div class="bd">奶(nǎi)=granny  ·  奶(nǎi)=granny</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">爷爷</div>
+    <div class="card-meta">
+      <div class="py">yé ye</div>
+      <div class="en">grandpa</div>
+      
+    </div>
+  </div>
+  <div class="bd">爷(yé)=grandpa  ·  爷(yé)=grandpa</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外婆</div>
+    <div class="card-meta">
+      <div class="py">wài pó</div>
+      <div class="en">grandma m.</div>
+      
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  婆(pó)=granny</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外公</div>
+    <div class="card-meta">
+      <div class="py">wài gōng</div>
+      <div class="en">grandpa m.</div>
+      
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  公(gōng)=grandfather</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">哥哥</div>
+    <div class="card-meta">
+      <div class="py">gē ge</div>
+      <div class="en">older brother</div>
+      
+    </div>
+  </div>
+  <div class="bd">哥(gē)=elder brother  ·  哥(gē)=elder brother</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">姐姐</div>
+    <div class="card-meta">
+      <div class="py">jiě jie</div>
+      <div class="en">older sister</div>
+      
+    </div>
+  </div>
+  <div class="bd">姐(jiě)=elder sister  ·  姐(jiě)=elder sister</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">弟弟</div>
+    <div class="card-meta">
+      <div class="py">dì di</div>
+      <div class="en">younger brother</div>
+      
+    </div>
+  </div>
+  <div class="bd">弟(dì)=younger brother  ·  弟(dì)=younger brother</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">妹妹</div>
+    <div class="card-meta">
+      <div class="py">mèi mei</div>
+      <div class="en">younger sister</div>
+      
+    </div>
+  </div>
+  <div class="bd">妹(mèi)=younger sister  ·  妹(mèi)=younger sister</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">水</div>
+    <div class="card-meta">
+      <div class="py">shuǐ</div>
+      <div class="en">water</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">家</div>
+    <div class="card-meta">
+      <div class="py">jiā</div>
+      <div class="en">home</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">今年</div>
+    <div class="card-meta">
+      <div class="py">jīn nián</div>
+      <div class="en">this year</div>
+      
+    </div>
+  </div>
+  <div class="bd">今(jīn)=now  ·  年(nián)=year</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">岁</div>
+    <div class="card-meta">
+      <div class="py">suì</div>
+      <div class="en">years old</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">多</div>
+    <div class="card-meta">
+      <div class="py">duō</div>
+      <div class="en">many</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">少</div>
+    <div class="card-meta">
+      <div class="py">shǎo</div>
+      <div class="en">few</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">大</div>
+    <div class="card-meta">
+      <div class="py">dà</div>
+      <div class="en">big</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">多少</div>
+    <div class="card-meta">
+      <div class="py">duō shǎo</div>
+      <div class="en">how many</div>
+      
+    </div>
+  </div>
+  <div class="bd">多(duō)=many  ·  少(shǎo)=few</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">多大</div>
+    <div class="card-meta">
+      <div class="py">duō dà</div>
+      <div class="en">how old</div>
+      
+    </div>
+  </div>
+  <div class="bd">多(duō)=many  ·  大(dà)=big</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">几</div>
+    <div class="card-meta">
+      <div class="py">jǐ</div>
+      <div class="en">how many</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">有</div>
+    <div class="card-meta">
+      <div class="py">yǒu</div>
+      <div class="en">have</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">了</div>
+    <div class="card-meta">
+      <div class="py">le</div>
+      <div class="en">particle</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">呢</div>
+    <div class="card-meta">
+      <div class="py">ne</div>
+      <div class="en">particle</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">女</div>
+    <div class="card-meta">
+      <div class="py">nǚ</div>
+      <div class="en">female</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">口</div>
+    <div class="card-meta">
+      <div class="py">kǒu</div>
+      <div class="en">MW</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>你家有几口人？</b></td><td class='pyp'>Nǐ jiā yǒu jǐ kǒu rén?</td><td>How many people in your family?</td></tr><tr><td><b>你今年多少岁了？</b></td><td class='pyp'>Nǐ jīnnián duōshao suì le?</td><td>How old are you?</td></tr><tr><td><b>我有两个姐姐。</b></td><td class='pyp'>Wǒ yǒu liǎng ge jiějie.</td><td>I have two elder sisters.</td></tr></table></div><div class="sec">📘 Lesson 5<span class="n">14 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">有</div>
+    <div class="card-meta">
+      <div class="py">yǒu</div>
+      <div class="en">have</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">没有</div>
+    <div class="card-meta">
+      <div class="py">méi yǒu</div>
+      <div class="en">no have</div>
+      
+    </div>
+  </div>
+  <div class="bd">没(méi)=not have  ·  有(yǒu)=have</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">写</div>
+    <div class="card-meta">
+      <div class="py">xiě</div>
+      <div class="en">write</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">会</div>
+    <div class="card-meta">
+      <div class="py">huì</div>
+      <div class="en">can</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">不会</div>
+    <div class="card-meta">
+      <div class="py">bú huì</div>
+      <div class="en">cannot</div>
+      
+    </div>
+  </div>
+  <div class="bd">不(bù)=not  ·  会(huì)=can</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">说</div>
+    <div class="card-meta">
+      <div class="py">shuō</div>
+      <div class="en">speak</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">汉字</div>
+    <div class="card-meta">
+      <div class="py">hàn zì</div>
+      <div class="en">character</div>
+      
+    </div>
+  </div>
+  <div class="bd">汉(hàn)=Han  ·  字(zì)=character</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">做</div>
+    <div class="card-meta">
+      <div class="py">zuò</div>
+      <div class="en">make</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">菜</div>
+    <div class="card-meta">
+      <div class="py">cài</div>
+      <div class="en">dish</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">好吃</div>
+    <div class="card-meta">
+      <div class="py">hǎo chī</div>
+      <div class="en">delicious</div>
+      
+    </div>
+  </div>
+  <div class="bd">好(hǎo)=good  ·  吃(chī)=eat</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">很</div>
+    <div class="card-meta">
+      <div class="py">hěn</div>
+      <div class="en">very</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">怎么</div>
+    <div class="card-meta">
+      <div class="py">zěn me</div>
+      <div class="en">how</div>
+      
+    </div>
+  </div>
+  <div class="bd">怎(zěn)=how  ·  么(me)=what</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">读</div>
+    <div class="card-meta">
+      <div class="py">dú</div>
+      <div class="en">read</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中国菜</div>
+    <div class="card-meta">
+      <div class="py">zhōng guó cài</div>
+      <div class="en">Chinese food</div>
+      
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  国(guó)=country  ·  菜(cài)=dish</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>你会说汉语吗？</b></td><td class='pyp'>Nǐ huì shuō Hànyǔ ma?</td><td>Can you speak Chinese?</td></tr><tr><td><b>她不会说。</b></td><td class='pyp'>Tā bú huì shuō.</td><td>She cannot speak.</td></tr><tr><td><b>这个字怎么写？</b></td><td class='pyp'>Zhège zì zěnme xiě?</td><td>How do you write this character?</td></tr></table></div><div class="sec">📘 Lesson 6<span class="n">24 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">前年</div>
+    <div class="card-meta">
+      <div class="py">qián nián</div>
+      <div class="en">year before last</div>
+      
+    </div>
+  </div>
+  <div class="bd">前(qián)=before  ·  年(nián)=year</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">去年</div>
+    <div class="card-meta">
+      <div class="py">qù nián</div>
+      <div class="en">last year</div>
+      
+    </div>
+  </div>
+  <div class="bd">去(qù)=go  ·  年(nián)=year</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">今年</div>
+    <div class="card-meta">
+      <div class="py">jīn nián</div>
+      <div class="en">this year</div>
+      
+    </div>
+  </div>
+  <div class="bd">今(jīn)=now  ·  年(nián)=year</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">明年</div>
+    <div class="card-meta">
+      <div class="py">míng nián</div>
+      <div class="en">next year</div>
+      
+    </div>
+  </div>
+  <div class="bd">明(míng)=bright/next  ·  年(nián)=year</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">后年</div>
+    <div class="card-meta">
+      <div class="py">hòu nián</div>
+      <div class="en">year after next</div>
+      
+    </div>
+  </div>
+  <div class="bd">后(hòu)=behind  ·  年(nián)=year</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">前天</div>
+    <div class="card-meta">
+      <div class="py">qián tiān</div>
+      <div class="en">day before yest.</div>
+      
+    </div>
+  </div>
+  <div class="bd">前(qián)=before  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">昨天</div>
+    <div class="card-meta">
+      <div class="py">zuó tiān</div>
+      <div class="en">yesterday</div>
+      
+    </div>
+  </div>
+  <div class="bd">昨(zuó)=past  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">今天</div>
+    <div class="card-meta">
+      <div class="py">jīn tiān</div>
+      <div class="en">today</div>
+      
+    </div>
+  </div>
+  <div class="bd">今(jīn)=now  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">明天</div>
+    <div class="card-meta">
+      <div class="py">míng tiān</div>
+      <div class="en">tomorrow</div>
+      
+    </div>
+  </div>
+  <div class="bd">明(míng)=bright/next  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">后天</div>
+    <div class="card-meta">
+      <div class="py">hòu tiān</div>
+      <div class="en">day after tom.</div>
+      
+    </div>
+  </div>
+  <div class="bd">后(hòu)=behind  ·  天(tiān)=sky/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">上个月</div>
+    <div class="card-meta">
+      <div class="py">shàng gè yuè</div>
+      <div class="en">last month</div>
+      
+    </div>
+  </div>
+  <div class="bd">上(shàng)=up  ·  个(gè)=MW  ·  月(yuè)=moon/month</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">这个月</div>
+    <div class="card-meta">
+      <div class="py">zhè ge yuè</div>
+      <div class="en">this month</div>
+      
+    </div>
+  </div>
+  <div class="bd">这(zhè)=this  ·  个(gè)=MW  ·  月(yuè)=moon/month</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">下个月</div>
+    <div class="card-meta">
+      <div class="py">xià gè yuè</div>
+      <div class="en">next month</div>
+      
+    </div>
+  </div>
+  <div class="bd">下(xià)=down  ·  个(gè)=MW  ·  月(yuè)=moon/month</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">星期一</div>
+    <div class="card-meta">
+      <div class="py">xīng qī yī</div>
+      <div class="en">Monday</div>
+      
+    </div>
+  </div>
+  <div class="bd">星(xīng)=star  ·  期(qī)=period  ·  一(yī)=one</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">星期日</div>
+    <div class="card-meta">
+      <div class="py">xīng qī rì</div>
+      <div class="en">Sunday</div>
+      
+    </div>
+  </div>
+  <div class="bd">星(xīng)=star  ·  期(qī)=period  ·  日(rì)=sun/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">天</div>
+    <div class="card-meta">
+      <div class="py">tiān</div>
+      <div class="en">day</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">月</div>
+    <div class="card-meta">
+      <div class="py">yuè</div>
+      <div class="en">month</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">去</div>
+    <div class="card-meta">
+      <div class="py">qù</div>
+      <div class="en">go</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">学校</div>
+    <div class="card-meta">
+      <div class="py">xué xiào</div>
+      <div class="en">school</div>
+      
+    </div>
+  </div>
+  <div class="bd">学(xué)=learn  ·  校(xiào)=school</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">看书</div>
+    <div class="card-meta">
+      <div class="py">kàn shū</div>
+      <div class="en">read</div>
+      
+    </div>
+  </div>
+  <div class="bd">看(kàn)=look  ·  书(shū)=book</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">读书</div>
+    <div class="card-meta">
+      <div class="py">dú shū</div>
+      <div class="en">study</div>
+      
+    </div>
+  </div>
+  <div class="bd">读(dú)=read  ·  书(shū)=book</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">号</div>
+    <div class="card-meta">
+      <div class="py">hào</div>
+      <div class="en">date</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">东</div>
+    <div class="card-meta">
+      <div class="py">dōng</div>
+      <div class="en">east</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">西</div>
+    <div class="card-meta">
+      <div class="py">xī</div>
+      <div class="en">west</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>今天几号？</b></td><td class='pyp'>Jīntiān jǐ hào?</td><td>What date is today?</td></tr><tr><td><b>今天星期几？</b></td><td class='pyp'>Jīntiān xīngqī jǐ?</td><td>What day is today?</td></tr><tr><td><b>我去学校看书。</b></td><td class='pyp'>Wǒ qù xuéxiào kàn shū.</td><td>I go to school to read.</td></tr></table></div><div class="sec">📘 Lesson 7<span class="n">29 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">学习</div>
+    <div class="card-meta">
+      <div class="py">xué xí</div>
+      <div class="en">study</div>
+      
+    </div>
+  </div>
+  <div class="bd">学(xué)=learn  ·  习(xí)=practice</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">大学</div>
+    <div class="card-meta">
+      <div class="py">dà xué</div>
+      <div class="en">university</div>
+      
+    </div>
+  </div>
+  <div class="bd">大(dà)=big  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">小学</div>
+    <div class="card-meta">
+      <div class="py">xiǎo xué</div>
+      <div class="en">primary school</div>
+      
+    </div>
+  </div>
+  <div class="bd">小(xiǎo)=small  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中学</div>
+    <div class="card-meta">
+      <div class="py">zhōng xué</div>
+      <div class="en">middle school</div>
+      
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">研究生</div>
+    <div class="card-meta">
+      <div class="py">yán jiū shēng</div>
+      <div class="en">postgraduate</div>
+      
+    </div>
+  </div>
+  <div class="bd">研(yán)=research  ·  究(jiū)=study  ·  生(shēng)=life/student</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">生日</div>
+    <div class="card-meta">
+      <div class="py">shēng rì</div>
+      <div class="en">birthday</div>
+      
+    </div>
+  </div>
+  <div class="bd">生(shēng)=life/student  ·  日(rì)=sun/day</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">想</div>
+    <div class="card-meta">
+      <div class="py">xiǎng</div>
+      <div class="en">want</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">喝</div>
+    <div class="card-meta">
+      <div class="py">hē</div>
+      <div class="en">drink</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">茶</div>
+    <div class="card-meta">
+      <div class="py">chá</div>
+      <div class="en">tea</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">吃</div>
+    <div class="card-meta">
+      <div class="py">chī</div>
+      <div class="en">eat</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">米饭</div>
+    <div class="card-meta">
+      <div class="py">mǐ fàn</div>
+      <div class="en">rice</div>
+      
+    </div>
+  </div>
+  <div class="bd">米(mǐ)=rice  ·  饭(fàn)=meal</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">早上</div>
+    <div class="card-meta">
+      <div class="py">zǎo shang</div>
+      <div class="en">morning</div>
+      
+    </div>
+  </div>
+  <div class="bd">早(zǎo)=morning  ·  上(shàng)=up</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">上午</div>
+    <div class="card-meta">
+      <div class="py">shàng wǔ</div>
+      <div class="en">morning</div>
+      
+    </div>
+  </div>
+  <div class="bd">上(shàng)=up  ·  午(wǔ)=noon</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">中午</div>
+    <div class="card-meta">
+      <div class="py">zhōng wǔ</div>
+      <div class="en">noon</div>
+      
+    </div>
+  </div>
+  <div class="bd">中(zhōng)=middle  ·  午(wǔ)=noon</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">下午</div>
+    <div class="card-meta">
+      <div class="py">xià wǔ</div>
+      <div class="en">afternoon</div>
+      
+    </div>
+  </div>
+  <div class="bd">下(xià)=down  ·  午(wǔ)=noon</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">晚上</div>
+    <div class="card-meta">
+      <div class="py">wǎn shang</div>
+      <div class="en">evening</div>
+      
+    </div>
+  </div>
+  <div class="bd">晚(wǎn)=evening  ·  上(shàng)=up</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">夜里</div>
+    <div class="card-meta">
+      <div class="py">yè lǐ</div>
+      <div class="en">night</div>
+      
+    </div>
+  </div>
+  <div class="bd">夜(yè)=night  ·  里(lǐ)=inside</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">商店</div>
+    <div class="card-meta">
+      <div class="py">shāng diàn</div>
+      <div class="en">shop</div>
+      
+    </div>
+  </div>
+  <div class="bd">商(shāng)=commerce  ·  店(diàn)=shop</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">买</div>
+    <div class="card-meta">
+      <div class="py">mǎi</div>
+      <div class="en">buy</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">个</div>
+    <div class="card-meta">
+      <div class="py">gè</div>
+      <div class="en">MW</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">杯</div>
+    <div class="card-meta">
+      <div class="py">bēi</div>
+      <div class="en">cup</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">这</div>
+    <div class="card-meta">
+      <div class="py">zhè</div>
+      <div class="en">this</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">那</div>
+    <div class="card-meta">
+      <div class="py">nà</div>
+      <div class="en">that</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">哪</div>
+    <div class="card-meta">
+      <div class="py">nǎ</div>
+      <div class="en">which</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">多少钱</div>
+    <div class="card-meta">
+      <div class="py">duō shao qián</div>
+      <div class="en">how much</div>
+      
+    </div>
+  </div>
+  <div class="bd">多(duō)=many  ·  少(shǎo)=few  ·  钱(qián)=money</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">钱</div>
+    <div class="card-meta">
+      <div class="py">qián</div>
+      <div class="en">money</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">块</div>
+    <div class="card-meta">
+      <div class="py">kuài</div>
+      <div class="en">yuan</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">毛</div>
+    <div class="card-meta">
+      <div class="py">máo</div>
+      <div class="en">jiao</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">有钱</div>
+    <div class="card-meta">
+      <div class="py">yǒu qián</div>
+      <div class="en">rich</div>
+      
+    </div>
+  </div>
+  <div class="bd">有(yǒu)=have  ·  钱(qián)=money</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>你想喝什么？</b></td><td class='pyp'>Nǐ xiǎng hē shénme?</td><td>What would you like to drink?</td></tr><tr><td><b>下午我想去商店。</b></td><td class='pyp'>Xiàwǔ wǒ xiǎng qù shāngdiàn.</td><td>I want to go to the shop this afternoon.</td></tr><tr><td><b>这个杯子多少钱？</b></td><td class='pyp'>Zhège bēizi duōshao qián?</td><td>How much is this cup?</td></tr></table></div><div class="sec">📘 Lesson 8<span class="n">23 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">小猫</div>
+    <div class="card-meta">
+      <div class="py">xiǎo māo</div>
+      <div class="en">kitten</div>
+      
+    </div>
+  </div>
+  <div class="bd">小(xiǎo)=small  ·  猫(māo)=cat</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">狗</div>
+    <div class="card-meta">
+      <div class="py">gǒu</div>
+      <div class="en">dog</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">椅子</div>
+    <div class="card-meta">
+      <div class="py">yǐ zi</div>
+      <div class="en">chair</div>
+      
+    </div>
+  </div>
+  <div class="bd">椅(yǐ)=chair  ·  子(zi)=suffix</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">这儿</div>
+    <div class="card-meta">
+      <div class="py">zhèr</div>
+      <div class="en">here</div>
+      
+    </div>
+  </div>
+  <div class="bd">这(zhè)=this  ·  儿(ér)=child</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">那儿</div>
+    <div class="card-meta">
+      <div class="py">nàr</div>
+      <div class="en">there</div>
+      
+    </div>
+  </div>
+  <div class="bd">那(nà)=that  ·  儿(ér)=child</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">哪儿</div>
+    <div class="card-meta">
+      <div class="py">nǎr</div>
+      <div class="en">where</div>
+      
+    </div>
+  </div>
+  <div class="bd">哪(nǎ)=which  ·  儿(ér)=child</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">在</div>
+    <div class="card-meta">
+      <div class="py">zài</div>
+      <div class="en">at</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">工作</div>
+    <div class="card-meta">
+      <div class="py">gōng zuò</div>
+      <div class="en">work</div>
+      
+    </div>
+  </div>
+  <div class="bd">工(gōng)=work  ·  作(zuò)=do</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">医生</div>
+    <div class="card-meta">
+      <div class="py">yī shēng</div>
+      <div class="en">doctor</div>
+      
+    </div>
+  </div>
+  <div class="bd">医(yī)=medicine  ·  生(shēng)=life/student</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">爸爸</div>
+    <div class="card-meta">
+      <div class="py">bà ba</div>
+      <div class="en">dad</div>
+      
+    </div>
+  </div>
+  <div class="bd">爸  ·  爸</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">医院</div>
+    <div class="card-meta">
+      <div class="py">yī yuàn</div>
+      <div class="en">hospital</div>
+      
+    </div>
+  </div>
+  <div class="bd">医(yī)=medicine  ·  院(yuàn)=courtyard</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">孩子</div>
+    <div class="card-meta">
+      <div class="py">hái zi</div>
+      <div class="en">child</div>
+      
+    </div>
+  </div>
+  <div class="bd">孩(hái)=child  ·  子(zi)=suffix</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">只</div>
+    <div class="card-meta">
+      <div class="py">zhī</div>
+      <div class="en">MW</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">上面</div>
+    <div class="card-meta">
+      <div class="py">shàng mian</div>
+      <div class="en">above</div>
+      
+    </div>
+  </div>
+  <div class="bd">上(shàng)=up  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">下面</div>
+    <div class="card-meta">
+      <div class="py">xià mian</div>
+      <div class="en">below</div>
+      
+    </div>
+  </div>
+  <div class="bd">下(xià)=down  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">左面</div>
+    <div class="card-meta">
+      <div class="py">zuǒ mian</div>
+      <div class="en">left</div>
+      
+    </div>
+  </div>
+  <div class="bd">左(zuǒ)=left  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">右面</div>
+    <div class="card-meta">
+      <div class="py">yòu mian</div>
+      <div class="en">right</div>
+      
+    </div>
+  </div>
+  <div class="bd">右(yòu)=right  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">前面</div>
+    <div class="card-meta">
+      <div class="py">qián mian</div>
+      <div class="en">front</div>
+      
+    </div>
+  </div>
+  <div class="bd">前(qián)=before  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">后面</div>
+    <div class="card-meta">
+      <div class="py">hòu mian</div>
+      <div class="en">behind</div>
+      
+    </div>
+  </div>
+  <div class="bd">后(hòu)=behind  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">里面</div>
+    <div class="card-meta">
+      <div class="py">lǐ mian</div>
+      <div class="en">inside</div>
+      
+    </div>
+  </div>
+  <div class="bd">里(lǐ)=inside  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外面</div>
+    <div class="card-meta">
+      <div class="py">wài mian</div>
+      <div class="en">outside</div>
+      
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  面(miàn)=side</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">外国</div>
+    <div class="card-meta">
+      <div class="py">wài guó</div>
+      <div class="en">foreign</div>
+      
+    </div>
+  </div>
+  <div class="bd">外(wài)=outside  ·  国(guó)=country</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">老外</div>
+    <div class="card-meta">
+      <div class="py">lǎo wài</div>
+      <div class="en">foreigner</div>
+      
+    </div>
+  </div>
+  <div class="bd">老(lǎo)=old  ·  外(wài)=outside</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>你在哪儿？</b></td><td class='pyp'>Nǐ zài nǎr?</td><td>Where are you?</td></tr><tr><td><b>小狗在椅子下面。</b></td><td class='pyp'>Xiǎo gǒu zài yǐzi xiàmian.</td><td>The little dog is under the chair.</td></tr><tr><td><b>你儿子在哪儿工作？</b></td><td class='pyp'>Nǐ érzi zài nǎr gōngzuò?</td><td>Where does your son work?</td></tr></table></div><div class="sec">📘 Lesson 9<span class="n">13 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">桌子</div>
+    <div class="card-meta">
+      <div class="py">zhuō zi</div>
+      <div class="en">table</div>
+      
+    </div>
+  </div>
+  <div class="bd">桌(zhuō)=table  ·  子(zi)=suffix</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">电脑</div>
+    <div class="card-meta">
+      <div class="py">diàn nǎo</div>
+      <div class="en">computer</div>
+      
+    </div>
+  </div>
+  <div class="bd">电(diàn)=electric  ·  脑(nǎo)=brain</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">本</div>
+    <div class="card-meta">
+      <div class="py">běn</div>
+      <div class="en">MW book</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">里</div>
+    <div class="card-meta">
+      <div class="py">lǐ</div>
+      <div class="en">inside</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">和</div>
+    <div class="card-meta">
+      <div class="py">hé</div>
+      <div class="en">and</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">没有</div>
+    <div class="card-meta">
+      <div class="py">méi yǒu</div>
+      <div class="en">no have</div>
+      
+    </div>
+  </div>
+  <div class="bd">没(méi)=not have  ·  有(yǒu)=have</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">能</div>
+    <div class="card-meta">
+      <div class="py">néng</div>
+      <div class="en">can</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">坐</div>
+    <div class="card-meta">
+      <div class="py">zuò</div>
+      <div class="en">sit</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">电影</div>
+    <div class="card-meta">
+      <div class="py">diàn yǐng</div>
+      <div class="en">movie</div>
+      
+    </div>
+  </div>
+  <div class="bd">电(diàn)=electric  ·  影(yǐng)=shadow</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">电视</div>
+    <div class="card-meta">
+      <div class="py">diàn shì</div>
+      <div class="en">TV</div>
+      
+    </div>
+  </div>
+  <div class="bd">电(diàn)=electric  ·  视(shì)=vision</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">电话</div>
+    <div class="card-meta">
+      <div class="py">diàn huà</div>
+      <div class="en">phone</div>
+      
+    </div>
+  </div>
+  <div class="bd">电(diàn)=electric  ·  话(huà)=speech</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">手机</div>
+    <div class="card-meta">
+      <div class="py">shǒu jī</div>
+      <div class="en">mobile</div>
+      
+    </div>
+  </div>
+  <div class="bd">手(shǒu)=hand  ·  机(jī)=machine</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">平板</div>
+    <div class="card-meta">
+      <div class="py">píng bǎn</div>
+      <div class="en">tablet</div>
+      
+    </div>
+  </div>
+  <div class="bd">平(píng)=flat  ·  板(bǎn)=board</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>桌子上有什么？</b></td><td class='pyp'>Zhuōzi shàng yǒu shénme?</td><td>What is on the table?</td></tr><tr><td><b>学校里有一个商店。</b></td><td class='pyp'>Xuéxiào lǐ yǒu yí ge shāngdiàn.</td><td>There is a shop in the school.</td></tr><tr><td><b>我能坐在这儿吗？</b></td><td class='pyp'>Wǒ néng zuò zài zhèr ma?</td><td>Can I sit here?</td></tr></table></div><div class="sec">📘 Lesson 10<span class="n">22 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">天气</div>
+    <div class="card-meta">
+      <div class="py">tiān qì</div>
+      <div class="en">weather</div>
+      
+    </div>
+  </div>
+  <div class="bd">天(tiān)=sky/day  ·  气(qì)=air</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">身体</div>
+    <div class="card-meta">
+      <div class="py">shēn tǐ</div>
+      <div class="en">body</div>
+      
+    </div>
+  </div>
+  <div class="bd">身(shēn)=body  ·  体(tǐ)=body</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">睡觉</div>
+    <div class="card-meta">
+      <div class="py">shuì jiào</div>
+      <div class="en">sleep</div>
+      
+    </div>
+  </div>
+  <div class="bd">睡(shuì)=sleep  ·  觉(jué)=feel</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">喜欢</div>
+    <div class="card-meta">
+      <div class="py">xǐ huan</div>
+      <div class="en">like</div>
+      
+    </div>
+  </div>
+  <div class="bd">喜(xǐ)=like  ·  欢(huān)=happy</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">冷</div>
+    <div class="card-meta">
+      <div class="py">lěng</div>
+      <div class="en">cold</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">热</div>
+    <div class="card-meta">
+      <div class="py">rè</div>
+      <div class="en">hot</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">雨</div>
+    <div class="card-meta">
+      <div class="py">yǔ</div>
+      <div class="en">rain</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">来</div>
+    <div class="card-meta">
+      <div class="py">lái</div>
+      <div class="en">come</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">给</div>
+    <div class="card-meta">
+      <div class="py">gěi</div>
+      <div class="en">give</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">喂</div>
+    <div class="card-meta">
+      <div class="py">wèi</div>
+      <div class="en">hello phone</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">也</div>
+    <div class="card-meta">
+      <div class="py">yě</div>
+      <div class="en">also</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">吧</div>
+    <div class="card-meta">
+      <div class="py">ba</div>
+      <div class="en">particle</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">些</div>
+    <div class="card-meta">
+      <div class="py">xiē</div>
+      <div class="en">some</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">爱</div>
+    <div class="card-meta">
+      <div class="py">ài</div>
+      <div class="en">love</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">打</div>
+    <div class="card-meta">
+      <div class="py">dǎ</div>
+      <div class="en">hit/call</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">话</div>
+    <div class="card-meta">
+      <div class="py">huà</div>
+      <div class="en">speech</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">身</div>
+    <div class="card-meta">
+      <div class="py">shēn</div>
+      <div class="en">body</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">体</div>
+    <div class="card-meta">
+      <div class="py">tǐ</div>
+      <div class="en">body</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">睡</div>
+    <div class="card-meta">
+      <div class="py">shuì</div>
+      <div class="en">sleep</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">觉</div>
+    <div class="card-meta">
+      <div class="py">jué</div>
+      <div class="en">feel</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">喜</div>
+    <div class="card-meta">
+      <div class="py">xǐ</div>
+      <div class="en">like</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">欢</div>
+    <div class="card-meta">
+      <div class="py">huān</div>
+      <div class="en">happy</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>你身体怎么样？</b></td><td class='pyp'>Nǐ shēntǐ zěnme yàng?</td><td>How is your health?</td></tr><tr><td><b>我很喜欢睡觉。</b></td><td class='pyp'>Wǒ hěn xǐhuan shuìjiào.</td><td>I really like sleeping.</td></tr><tr><td><b>今天天气很好。</b></td><td class='pyp'>Jīntiān tiānqì hěn hǎo.</td><td>The weather is very good today.</td></tr></table></div><div class="sec">📘 Lesson 11<span class="n">31 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">比</div>
+    <div class="card-meta">
+      <div class="py">bǐ</div>
+      <div class="en">compare</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">让</div>
+    <div class="card-meta">
+      <div class="py">ràng</div>
+      <div class="en">let</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">太</div>
+    <div class="card-meta">
+      <div class="py">tài</div>
+      <div class="en">too</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">用</div>
+    <div class="card-meta">
+      <div class="py">yòng</div>
+      <div class="en">use</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">因为</div>
+    <div class="card-meta">
+      <div class="py">yīn wèi</div>
+      <div class="en">because</div>
+      
+    </div>
+  </div>
+  <div class="bd">因(yīn)=because  ·  为(wèi)=for</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">所以</div>
+    <div class="card-meta">
+      <div class="py">suǒ yǐ</div>
+      <div class="en">so</div>
+      
+    </div>
+  </div>
+  <div class="bd">所(suǒ)=so  ·  以(yǐ)=so</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">非常</div>
+    <div class="card-meta">
+      <div class="py">fēi cháng</div>
+      <div class="en">very</div>
+      
+    </div>
+  </div>
+  <div class="bd">非(fēi)=not  ·  常(cháng)=often</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">问</div>
+    <div class="card-meta">
+      <div class="py">wèn</div>
+      <div class="en">ask</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">都</div>
+    <div class="card-meta">
+      <div class="py">dōu</div>
+      <div class="en">all</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">它</div>
+    <div class="card-meta">
+      <div class="py">tā</div>
+      <div class="en">it</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">但</div>
+    <div class="card-meta">
+      <div class="py">dàn</div>
+      <div class="en">but</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">每</div>
+    <div class="card-meta">
+      <div class="py">měi</div>
+      <div class="en">every</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">高</div>
+    <div class="card-meta">
+      <div class="py">gāo</div>
+      <div class="en">tall</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">或</div>
+    <div class="card-meta">
+      <div class="py">huò</div>
+      <div class="en">or</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">地</div>
+    <div class="card-meta">
+      <div class="py">dì</div>
+      <div class="en">ground</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">最</div>
+    <div class="card-meta">
+      <div class="py">zuì</div>
+      <div class="en">most</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">近</div>
+    <div class="card-meta">
+      <div class="py">jìn</div>
+      <div class="en">near</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">远</div>
+    <div class="card-meta">
+      <div class="py">yuǎn</div>
+      <div class="en">far</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">别</div>
+    <div class="card-meta">
+      <div class="py">bié</div>
+      <div class="en">other</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">带</div>
+    <div class="card-meta">
+      <div class="py">dài</div>
+      <div class="en">bring</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">才</div>
+    <div class="card-meta">
+      <div class="py">cái</div>
+      <div class="en">just</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">次</div>
+    <div class="card-meta">
+      <div class="py">cì</div>
+      <div class="en">time</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">还</div>
+    <div class="card-meta">
+      <div class="py">hái</div>
+      <div class="en">still</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">情</div>
+    <div class="card-meta">
+      <div class="py">qíng</div>
+      <div class="en">feeling</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">空</div>
+    <div class="card-meta">
+      <div class="py">kōng</div>
+      <div class="en">empty</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">色</div>
+    <div class="card-meta">
+      <div class="py">sè</div>
+      <div class="en">color</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">刚</div>
+    <div class="card-meta">
+      <div class="py">gāng</div>
+      <div class="en">just</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">就</div>
+    <div class="card-meta">
+      <div class="py">jiù</div>
+      <div class="en">then</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">真</div>
+    <div class="card-meta">
+      <div class="py">zhēn</div>
+      <div class="en">real</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">已</div>
+    <div class="card-meta">
+      <div class="py">yǐ</div>
+      <div class="en">already</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">经</div>
+    <div class="card-meta">
+      <div class="py">jīng</div>
+      <div class="en">already</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>他比我高。</b></td><td class='pyp'>Tā bǐ wǒ gāo.</td><td>He is taller than me.</td></tr><tr><td><b>因为太热了，所以我不想去。</b></td><td class='pyp'>Yīnwèi tài rè le, suǒyǐ wǒ bù xiǎng qù.</td><td>Because it is too hot, I do not want to go.</td></tr><tr><td><b>你每天都来吗？</b></td><td class='pyp'>Nǐ měi tiān dōu lái ma?</td><td>Do you come every day?</td></tr></table></div><div class="sec">📘 Lesson 12<span class="n">13 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">一样</div>
+    <div class="card-meta">
+      <div class="py">yí yàng</div>
+      <div class="en">same</div>
+      
+    </div>
+  </div>
+  <div class="bd">一(yī)=one  ·  样(yàng)=manner</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">怎么样</div>
+    <div class="card-meta">
+      <div class="py">zěn me yàng</div>
+      <div class="en">how about</div>
+      
+    </div>
+  </div>
+  <div class="bd">怎(zěn)=how  ·  么(me)=what  ·  样(yàng)=manner</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">还是</div>
+    <div class="card-meta">
+      <div class="py">hái shì</div>
+      <div class="en">or/still</div>
+      
+    </div>
+  </div>
+  <div class="bd">还(hái)=still  ·  是</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">但是</div>
+    <div class="card-meta">
+      <div class="py">dàn shì</div>
+      <div class="en">but</div>
+      
+    </div>
+  </div>
+  <div class="bd">但(dàn)=but  ·  是</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">自己</div>
+    <div class="card-meta">
+      <div class="py">zì jǐ</div>
+      <div class="en">oneself</div>
+      
+    </div>
+  </div>
+  <div class="bd">自(zì)=self  ·  己(jǐ)=self</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">可以</div>
+    <div class="card-meta">
+      <div class="py">kě yǐ</div>
+      <div class="en">can</div>
+      
+    </div>
+  </div>
+  <div class="bd">可(kě)=can  ·  以(yǐ)=so</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">可能</div>
+    <div class="card-meta">
+      <div class="py">kě néng</div>
+      <div class="en">maybe</div>
+      
+    </div>
+  </div>
+  <div class="bd">可(kě)=can  ·  能(néng)=can</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">现在</div>
+    <div class="card-meta">
+      <div class="py">xiàn zài</div>
+      <div class="en">now</div>
+      
+    </div>
+  </div>
+  <div class="bd">现(xiàn)=now  ·  在(zài)=at</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">时候</div>
+    <div class="card-meta">
+      <div class="py">shí hou</div>
+      <div class="en">time</div>
+      
+    </div>
+  </div>
+  <div class="bd">时(shí)=time  ·  候(hòu)=wait</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">为什么</div>
+    <div class="card-meta">
+      <div class="py">wèi shén me</div>
+      <div class="en">why</div>
+      
+    </div>
+  </div>
+  <div class="bd">为(wèi)=for  ·  什(shén)=what  ·  么(me)=what</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">觉得</div>
+    <div class="card-meta">
+      <div class="py">jué de</div>
+      <div class="en">feel</div>
+      
+    </div>
+  </div>
+  <div class="bd">觉(jué)=feel  ·  得</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">知道</div>
+    <div class="card-meta">
+      <div class="py">zhī dào</div>
+      <div class="en">know</div>
+      
+    </div>
+  </div>
+  <div class="bd">知(zhī)=know  ·  道(dào)=road</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">希望</div>
+    <div class="card-meta">
+      <div class="py">xī wàng</div>
+      <div class="en">hope</div>
+      
+    </div>
+  </div>
+  <div class="bd">希(xī)=hope  ·  望(wàng)=hope</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>我觉得可以。</b></td><td class='pyp'>Wǒ juéde kěyǐ.</td><td>I think it is okay.</td></tr><tr><td><b>你知道为什么吗？</b></td><td class='pyp'>Nǐ zhīdào wèi shénme ma?</td><td>Do you know why?</td></tr><tr><td><b>我希望你能来。</b></td><td class='pyp'>Wǒ xīwàng nǐ néng lái.</td><td>I hope you can come.</td></tr></table></div><div class="sec">📘 Lesson 14<span class="n">10 words</span></div><div class="card-grid"><div class="card">
+  <div class="card-top">
+    <div class="hz">认识</div>
+    <div class="card-meta">
+      <div class="py">rèn shi</div>
+      <div class="en">to know; to meet</div>
+      
+    </div>
+  </div>
+  <div class="bd">认(rèn)=recognize  ·  识(shí)=know</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">高兴</div>
+    <div class="card-meta">
+      <div class="py">gāo xìng</div>
+      <div class="en">happy; glad</div>
+      
+    </div>
+  </div>
+  <div class="bd">高(gāo)=tall  ·  兴(xìng)=happy</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">听</div>
+    <div class="card-meta">
+      <div class="py">tīng</div>
+      <div class="en">to listen; to hear</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">飞机</div>
+    <div class="card-meta">
+      <div class="py">fēi jī</div>
+      <div class="en">plane; airplane</div>
+      
+    </div>
+  </div>
+  <div class="bd">飞(fēi)=fly  ·  机(jī)=machine</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">坐</div>
+    <div class="card-meta">
+      <div class="py">zuò</div>
+      <div class="en">to take (vehicle); sit</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">出租车</div>
+    <div class="card-meta">
+      <div class="py">chū zū chē</div>
+      <div class="en">taxi</div>
+      
+    </div>
+  </div>
+  <div class="bd">出(chū)=go out  ·  租(zū)=rent  ·  车(chē)=vehicle</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">大学</div>
+    <div class="card-meta">
+      <div class="py">dà xué</div>
+      <div class="en">university; college</div>
+      
+    </div>
+  </div>
+  <div class="bd">大(dà)=big  ·  学(xué)=learn</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">一起</div>
+    <div class="card-meta">
+      <div class="py">yì qǐ</div>
+      <div class="en">together</div>
+      
+    </div>
+  </div>
+  <div class="bd">一(yī)=one  ·  起(qǐ)=rise</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">年</div>
+    <div class="card-meta">
+      <div class="py">nián</div>
+      <div class="en">year</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div><div class="card">
+  <div class="card-top">
+    <div class="hz">来</div>
+    <div class="card-meta">
+      <div class="py">lái</div>
+      <div class="en">to come</div>
+      
+    </div>
+  </div>
+  <div class="bd">—</div>
+</div></div><div class="pat-box"><div class="pat-title">Key Patterns</div>
+<table class="pat-table"><tr><th>Chinese</th><th>Pinyin</th><th>English</th></tr><tr><td><b>认识你很高兴！</b></td><td class='pyp'>Rènshi nǐ hěn gāoxìng!</td><td>Nice to meet you!</td></tr><tr><td><b>认识你，我也很高兴！</b></td><td class='pyp'>Rènshi nǐ, wǒ yě hěn gāoxìng!</td><td>Nice to meet you, I&#x27;m glad too!</td></tr><tr><td><b>你是怎么来的？</b></td><td class='pyp'>Nǐ shì zěnme lái de?</td><td>How did you come?</td></tr><tr><td><b>我是坐飞机来的。</b></td><td class='pyp'>Wǒ shì zuò fēijī lái de.</td><td>I came by plane.</td></tr><tr><td><b>我不是坐出租车来的。</b></td><td class='pyp'>Wǒ bú shì zuò chūzūchē lái de.</td><td>I didn&#x27;t come by taxi.</td></tr><tr><td><b>我们是在飞机上认识的。</b></td><td class='pyp'>Wǒmen shì zài fēijī shàng rènshi de.</td><td>We met on the plane.</td></tr><tr><td><b>明天我们一起去大学，好吗？</b></td><td class='pyp'>Míngtiān wǒmen yìqǐ qù dàxué, hǎo ma?</td><td>Tomorrow let&#x27;s go to university together, OK?</td></tr></table></div></div>
+<div id="nores" class="nores" style="display:none">No matching words found.</div>
+
+<script>
+function switchTab(btn, id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+  document.getElementById('search').value='';
+  doSearch();
+}
+function doSearch(){
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const active = document.querySelector('.content.active');
+  const cards = active.querySelectorAll('.card');
+  const secs = active.querySelectorAll('.sec');
+  const grams = active.querySelectorAll('.gram-card');
+  let any = false;
+  cards.forEach(c=>{
+    const txt = c.innerText.toLowerCase();
+    const show = !q || txt.includes(q);
+    c.style.display = show ? '' : 'none';
+    if(show) any = true;
+  });
+  grams.forEach(g=>{
+    const txt = g.innerText.toLowerCase();
+    const show = !q || txt.includes(q);
+    g.style.display = show ? '' : 'none';
+    if(show) any = true;
+  });
+  secs.forEach(s=>s.style.display = q ? 'none' : '');
+  document.querySelectorAll('.pat-box').forEach(pb=>pb.style.display = q ? 'none' : '');
+  document.querySelectorAll('.gram-title').forEach(gt=>gt.style.display = q ? 'none' : '');
+  document.getElementById('nores').style.display = (q && !any) ? 'block' : 'none';
+  if(!q) secs.forEach(s=>s.style.display='');
+}
+</script>
+</body>
+</html>

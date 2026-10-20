@@ -1,0 +1,7 @@
+services:
+  hsk-sprint:
+    build: .
+    container_name: hsk-sprint
+    restart: unless-stopped
+    ports:
+      - "8088:80"   # change 8088 to any free port
