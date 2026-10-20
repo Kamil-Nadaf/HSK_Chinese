@@ -1,6 +1,6 @@
 {
-  "name": "HSK Sprint",
-  "short_name": "HSK Sprint",
+  "name": "HSK Practice Sheet",
+  "short_name": "HSK Practice Sheet",
   "description": "Active-recall practice for HSK 1",
   "start_url": "./index.html",
   "scope": "./",

@@ -5,7 +5,7 @@ const fs = require('fs');
 let win = null, tray = null, quitting = false;
 const iconPath = path.join(__dirname, 'build', 'icon.png');
 const cfgFile = () => path.join(app.getPath('userData'), 'reminder.json');
-let rem = { on: false, h: 20, m: 0, title: 'HSK Sprint', body: 'Time to practise.', last: '' };
+let rem = { on: false, h: 20, m: 0, title: 'HSK Practice Sheet', body: 'Time to practise.', last: '' };
 try { rem = Object.assign(rem, JSON.parse(fs.readFileSync(cfgFile(), 'utf8'))); } catch (e) {}
 const saveRem = () => { try { fs.writeFileSync(cfgFile(), JSON.stringify(rem)); } catch (e) {} };
 const today = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
@@ -21,7 +21,7 @@ function showWin() {
 
 function createWin(hidden) {
   win = new BrowserWindow({
-    width: 480, height: 860, minWidth: 360, minHeight: 560, title: 'HSK Sprint',
+    width: 480, height: 860, minWidth: 360, minHeight: 560, title: 'HSK Practice Sheet',
     show: !hidden, backgroundColor: '#E8F0EA', icon: iconPath,
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
   });
@@ -65,9 +65,9 @@ app.whenReady().then(() => {
   try {
     const img = nativeImage.createFromPath(iconPath).resize({ width: 18, height: 18 });
     tray = new Tray(img);
-    tray.setToolTip('HSK Sprint');
+    tray.setToolTip('HSK Practice Sheet');
     tray.setContextMenu(Menu.buildFromTemplate([
-      { label: 'Open HSK Sprint', click: showWin },
+      { label: 'Open HSK Practice Sheet', click: showWin },
       { label: 'Quit', click: () => { quitting = true; app.quit(); } }
     ]));
     tray.on('click', showWin);

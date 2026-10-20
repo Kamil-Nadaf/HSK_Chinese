@@ -142,7 +142,7 @@ LAT = 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+
 EXT = 'U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF'
 FONTCSS = ''.join(_ff('IBM Plex Sans', w, 'latin', LAT) + _ff('IBM Plex Sans', w, 'latin-ext', EXT) for w in (400, 600))
 html = html.replace('/*FONTFACE*/', FONTCSS)
-html = html.replace('<title>HSK 1 Sprint</title>', '<title>HSK 1 Sprint</title>\n' + LINK, 1)
+html = html.replace('<title>HSK Practice Sheet</title>', '<title>HSK Practice Sheet</title>\n' + LINK, 1)
 
 PWA = '\n<meta name="theme-color" content="#0F6E7A">\n<link rel="manifest" href="manifest.webmanifest">\n<link rel="icon" href="icon-192.png">'
 # fragment for the Artifact tool
@@ -152,8 +152,8 @@ full = ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
         '<meta name="color-scheme" content="light dark">'
         '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style></head><body>\n'
-        + html.replace('<title>HSK 1 Sprint</title>', '').replace(LINK, '').replace(PWA, '') + '\n</body></html>')
-full = full.replace('<head>', '<head><title>HSK 1 Sprint</title>' + PWA + LINK, 1)
+        + html.replace('<title>HSK Practice Sheet</title>', '').replace(LINK, '').replace(PWA, '') + '\n</body></html>')
+full = full.replace('<head>', '<head><title>HSK Practice Sheet</title>' + PWA + LINK, 1)
 open(f'{OUT}/index.html', 'w', encoding='utf8').write(full)
 print('vocab', len(vocab), 'sentences', len(sentences), 'qa', len(qa), 'size kb', len(full) // 1024)
 import shutil, glob

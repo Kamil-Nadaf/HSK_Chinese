@@ -1,7 +1,7 @@
 {
   "name": "hsk-sprint",
   "version": "1.1.0",
-  "description": "HSK 1 Sprint: active-recall practice for HSK 1",
+  "description": "HSK Practice Sheet: active-recall practice for HSK 1",
   "author": { "name": "Kamil Nadaf", "email": "maruffnadaf@gmail.com" },
   "license": "MIT",
   "main": "main.js",
@@ -18,11 +18,11 @@
   },
   "build": {
     "appId": "com.kamilnadaf.hsksprint",
-    "productName": "HSK Sprint",
+    "productName": "HSK Practice Sheet",
     "copyright": "Copyright (c) 2026 Kamil Nadaf",
     "files": ["main.js", "preload.js", "site/**/*", "build/icon.png"],
     "directories": { "buildResources": "build", "output": "dist" },
-    "artifactName": "HSK-Sprint-${version}-${os}-${arch}.${ext}",
+    "artifactName": "HSK-Practice-Sheet-${version}-${os}-${arch}.${ext}",
     "mac": { "category": "public.app-category.education", "icon": "build/icon.png", "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }] },
     "win": { "icon": "build/icon.png", "target": [{ "target": "nsis", "arch": ["x64"] }] },
     "linux": { "icon": "build/icon.png", "category": "Education", "target": ["AppImage"] },

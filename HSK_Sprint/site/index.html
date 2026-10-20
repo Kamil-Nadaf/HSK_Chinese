@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><title>HSK 1 Sprint</title>
+<html lang="en"><head><title>HSK Practice Sheet</title>
 <meta name="theme-color" content="#0F6E7A">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style></head><body>
@@ -322,6 +322,7 @@ textarea{width:100%;min-height:70px;font-size:12px}
   @keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 }
 @media (max-width:420px){.opts.two{grid-template-columns:1fr}}
+@media (max-width:520px){.top .brand{flex-direction:column;align-items:flex-start;gap:0}.top .brand b{font-size:24px;line-height:1.1}.top .brand span{font-size:12px}.pill{padding:6px 10px;font-size:12.5px}}
 button.brand,button.sbrand{background:none;border:0;padding:0;color:var(--ink);text-align:left}
 .sbrand{display:none}
 .dx{display:none}
@@ -493,7 +494,7 @@ function go(v,p){view=v;vp=p||{};stopTimers();render();window.scrollTo(0,0)}
 function stopTimers(){clearTimeout(autoT);stopAudio()}
 function mount(html){$('#view').innerHTML=html}
 function renderTabs(){const main=['home','cards','quiz','write','exam'];const cur=({study:'cards',type:'quiz',build:'quiz',qz:'quiz',qres:'quiz',wsess:'write',ex:'exam',exres:'exam'})[view]||view;
-  $('#tabs').innerHTML=`<button class="sbrand" data-act="settings" aria-label="Profile and settings"><b>汉语</b><span>HSK 1 Sprint</span></button>`+TABS.map(t=>`<button class="tab" data-act="tab" data-v="${t[0]}" ${t[0]===cur?'aria-current="page"':''}><span class="g">${t[2]}</span><span class="n">${t[1]==='Dict'?'Dict<span class="dx">ionary</span>':t[1]}</span></button>`).join('')}
+  $('#tabs').innerHTML=`<button class="sbrand" data-act="settings" aria-label="Profile and settings"><b>汉语</b><span>HSK Practice Sheet</span></button>`+TABS.map(t=>`<button class="tab" data-act="tab" data-v="${t[0]}" ${t[0]===cur?'aria-current="page"':''}><span class="g">${t[2]}</span><span class="n">${t[1]==='Dict'?'Dict<span class="dx">ionary</span>':t[1]}</span></button>`).join('')}
 function updateMe(){const b=$('#me'),show=['home','cards','quiz','write','exam','dict'].includes(view);if(!b)return;b.hidden=!show;document.body.classList.toggle('hasme',show);
   b.textContent=((S.profile&&S.profile.name||'').trim().charAt(0).toUpperCase())||'学'}
 function render(){renderTabs();updateMe();document.body.classList.toggle('w',view==='home');({me:vMe,dict:vDict,home:vHome,cards:vCards,quiz:vQuiz,write:vWrite,exam:vExam,study:vStudy,qz:vQz,qres:vQres,type:vType,build:vBuild,wsess:vWsess,ex:vEx,exres:vExres})[view]()}
@@ -528,7 +529,7 @@ function vHome(){
   const weak=V.filter(isWeak).sort((a,b)=>(S.cards[b.id].bad-S.cards[b.id].ok)-(S.cards[a.id].bad-S.cards[a.id].ok)).slice(0,8);
   const examTxt=goalTxt(),gl=goal();
   mount(`
-  <div class="top"><button class="brand" data-act="settings" aria-label="Profile and settings"><b>汉语</b><span>HSK 1 Sprint</span></button><div class="sp"></div>
+  <div class="top"><button class="brand" data-act="settings" aria-label="Profile and settings"><b>汉语</b><span>HSK Practice Sheet</span></button><div class="sp"></div>
     <button class="pill" data-act="goal" aria-label="Edit goal"><b>${esc(examTxt)}</b></button></div>
   <div class="hgrid"><div class="hc">
   <section class="card hero">
@@ -1003,16 +1004,16 @@ function remindBody(){const core=pool([]);const due=dueNow(core).length,tg=targe
   return (due+nNew?`${due} to review and ${nNew} new words today.`:'Time for a quick practice round.')+(left>=0?' '+goalTxt()+'.':'')}
 let webTimer=null;
 function applyReminder(){const r=rem();const [h,m]=(r.time||'20:00').split(':').map(Number);
-  if(NAT){try{NAT.setReminder(!!r.on,h,m,'HSK Sprint',remindBody())}catch(e){}return}
+  if(NAT){try{NAT.setReminder(!!r.on,h,m,'HSK Practice Sheet',remindBody())}catch(e){}return}
   clearInterval(webTimer);webTimer=null;
   if(r.on&&'Notification' in window&&Notification.permission==='granted'){webTimer=setInterval(()=>{const d=new Date(),t=pad(d.getHours())+':'+pad(d.getMinutes());
-    if(t>=r.time&&r.last!==todayStr()&&t<=addMin(r.time,90)){r.last=todayStr();save();try{new Notification('HSK Sprint',{body:remindBody()})}catch(e){}}},30000)}}
+    if(t>=r.time&&r.last!==todayStr()&&t<=addMin(r.time,90)){r.last=todayStr();save();try{new Notification('HSK Practice Sheet',{body:remindBody()})}catch(e){}}},30000)}}
 const addMin=(t,n)=>{const [h,m]=t.split(':').map(Number),x=Math.min(h*60+m+n,1439);return pad(Math.floor(x/60))+':'+pad(x%60)};
 async function testNote(){
-  if(NAT){try{NAT.testNotification('HSK Sprint',remindBody());toast('Test sent. Allow notifications if asked.')}catch(e){toast('Could not send')}return}
+  if(NAT){try{NAT.testNotification('HSK Practice Sheet',remindBody());toast('Test sent. Allow notifications if asked.')}catch(e){toast('Could not send')}return}
   if(!('Notification' in window)){toast('This browser has no notifications');return}
   let p=Notification.permission;if(p!=='granted'&&p!=='denied')p=await Notification.requestPermission();
-  if(p==='granted'){try{new Notification('HSK Sprint',{body:remindBody()});applyReminder()}catch(e){toast('Notifications are blocked here')}}else toast('Notifications are blocked for this site')}
+  if(p==='granted'){try{new Notification('HSK Practice Sheet',{body:remindBody()});applyReminder()}catch(e){toast('Notifications are blocked here')}}else toast('Notifications are blocked for this site')}
 function remindHow(){const p=natPlat();return p==='android'?'Android reminders. They also fire when the app is closed.':p==='desktop'?'Desktop reminders. The app keeps running in the tray so they can fire.':'Browser reminders only fire while this page is open. Install the app for reliable ones.'}
 function openProfile(){openSettings()}
 /* ---------- sheets ---------- */
@@ -1192,7 +1193,7 @@ function settingsHTML(){
   <textarea id="bk" aria-label="Backup text"></textarea>
   <div class="row wrap"><button class="btn sm" data-act="bk-copy">Copy backup</button><button class="btn sm" data-act="bk-restore">Restore from text</button></div>
   <h3 class="sec3">About</h3>
-  <p class="small muted">HSK Sprint, developed by Kamil Nadaf.<br>MIT License, © 2026 Kamil Nadaf.<br>Dictionary: CC-CEDICT (CC BY-SA 4.0).</p>
+  <p class="small muted">HSK Practice Sheet, developed by Kamil Nadaf.<br>MIT License, © 2026 Kamil Nadaf.<br>Dictionary: CC-CEDICT (CC BY-SA 4.0).</p>
   <div class="row wrap"><button class="btn sm bad" data-act="reset" id="rs">Reset all progress</button><span class="sp"></span><button class="btn primary" data-act="back">Done</button></div>`)}
 
 /* ---------- actions ---------- */

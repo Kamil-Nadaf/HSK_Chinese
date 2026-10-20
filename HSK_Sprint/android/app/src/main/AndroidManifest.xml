@@ -3,7 +3,7 @@
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-  <application android:label="HSK Sprint" android:description="@string/dev" android:icon="@mipmap/ic_launcher" android:allowBackup="true" android:theme="@style/T" android:usesCleartextTraffic="false">
+  <application android:label="HSK Practice Sheet" android:description="@string/dev" android:icon="@mipmap/ic_launcher" android:allowBackup="true" android:theme="@style/T" android:usesCleartextTraffic="false">
     <activity android:name=".MainActivity" android:exported="true" android:windowSoftInputMode="adjustResize" android:configChanges="orientation|screenSize|keyboardHidden|uiMode|smallestScreenSize|screenLayout">
       <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
     </activity>
