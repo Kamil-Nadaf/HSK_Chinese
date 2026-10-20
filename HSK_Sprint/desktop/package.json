@@ -10,7 +10,8 @@
     "start": "npm run prepare-site && electron .",
     "dist": "npm run prepare-site && electron-builder",
     "dist:mac": "npm run prepare-site && electron-builder --mac",
-    "dist:win": "npm run prepare-site && electron-builder --win"
+    "dist:win": "npm run prepare-site && electron-builder --win",
+    "dist:linux": "npm run prepare-site && electron-builder --linux"
   },
   "devDependencies": {
     "electron": "^44.9.1",
@@ -25,7 +26,7 @@
     "artifactName": "HSK-Practice-Sheet-${version}-${os}-${arch}.${ext}",
     "mac": { "category": "public.app-category.education", "icon": "build/icon.png", "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }] },
     "win": { "icon": "build/icon.png", "target": [{ "target": "nsis", "arch": ["x64"] }] },
-    "linux": { "icon": "build/icon.png", "category": "Education", "target": ["AppImage"] },
+    "linux": { "icon": "build/icon.png", "category": "Education", "target": ["AppImage", "deb"] },
     "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
   }
 }

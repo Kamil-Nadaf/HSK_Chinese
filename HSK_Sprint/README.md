@@ -11,6 +11,8 @@ Open the **Releases** page of this repository (right-hand side of the repo home 
 - **Android phone:** `...-android.apk`. Open it on the phone. If Android asks, allow installs from this source, then tap Install.
 - **Mac:** `HSK-Practice-Sheet-...-mac-arm64.dmg` for M1/M2/M3/M4 Macs, `...-mac-x64.dmg` for older Intel Macs. Open it and drag HSK Practice Sheet into Applications. The first time, right-click the app and choose Open.
 - **Windows:** `HSK-Practice-Sheet-...-win-x64.exe`. Double-click it and follow the installer. If Windows warns about an unknown publisher, click More info, then Run anyway.
+- **Linux:** `HSK-Practice-Sheet-...-linux-x86_64.AppImage` (make it executable with `chmod +x`, then double-click or run it) or the `.deb` for Debian and Ubuntu (`sudo apt install ./file.deb`).
+- **iPhone and iPad:** there is no App Store build, because Apple only allows installs through a paid developer account. Instead open the web app in Safari at `https://kamil-nadaf.github.io/HSK_Chinese/`, tap Share, then **Add to Home Screen**. It then opens full screen like an app and works offline.
 
 Not sure which Mac you have? Apple menu, About This Mac: "Apple M..." means arm64, "Intel" means x64.
 
