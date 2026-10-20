@@ -34,7 +34,7 @@ Today screen, **+ Add new words**:
 
 ## Profile, theme and reminders
 
-Tap the red seal at the top right of any main screen. It opens one sheet with your profile, light/dark and colour (Jade, Indigo, Plum, Ink), daily reminder, study options, library, backup and about. The profile (name, email) is stored on the device only; there is no account. Daily reminders are real notifications in the Android app and the desktop app. In a plain browser they only fire while the page is open.
+Tap the red seal at the top right of any main screen. It opens one sheet with your profile, light/dark and a theme (Jade exercise book, Paper, Glass, Indigo, Plum, Ink), daily reminder, study options, library, backup and about. The profile (name, email) is stored on the device only; there is no account. Daily reminders are real notifications in the Android app and the desktop app. In a plain browser they only fire while the page is open.
 
 ## Install
 
