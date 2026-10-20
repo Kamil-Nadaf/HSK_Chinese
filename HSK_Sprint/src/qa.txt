@@ -1,0 +1,27 @@
+# lesson|question zh|question pinyin|answer zh|answer pinyin|answer English
+1|谢谢你。|xièxie nǐ.|不客气。|bú kèqi.|You're welcome.
+1|对不起。|duìbuqǐ.|没关系。|méi guānxi.|It's okay.
+2|你好吗？|nǐ hǎo ma?|我很好。|wǒ hěn hǎo.|I'm very well.
+2|你叫什么名字？|nǐ jiào shénme míngzi?|我叫王方。|wǒ jiào Wáng Fāng.|I'm called Wang Fang.
+3|你是哪国人？|nǐ shì nǎ guó rén?|我是中国人。|wǒ shì Zhōngguórén.|I'm Chinese.
+4|你今年多大了？|nǐ jīnnián duō dà le?|我今年二十岁了。|wǒ jīnnián èrshí suì le.|I'm twenty.
+4|你家有几口人？|nǐ jiā yǒu jǐ kǒu rén?|我家有四口人。|wǒ jiā yǒu sì kǒu rén.|Four people.
+5|你有姐姐吗？|nǐ yǒu jiějie ma?|我有两个姐姐。|wǒ yǒu liǎng ge jiějie.|I have two older sisters.
+5|你会说汉语吗？|nǐ huì shuō Hànyǔ ma?|我会说汉语。|wǒ huì shuō Hànyǔ.|I can speak Chinese.
+5|你会做中国菜吗？|nǐ huì zuò Zhōngguó cài ma?|我不会做。|wǒ bú huì zuò.|I can't cook it.
+6|今天几号？|jīntiān jǐ hào?|今天九月一号。|jīntiān jiǔ yuè yī hào.|September 1st.
+6|今天星期几？|jīntiān xīngqī jǐ?|星期三。|xīngqī sān.|Wednesday.
+7|你想喝什么？|nǐ xiǎng hē shénme?|我想喝茶。|wǒ xiǎng hē chá.|I'd like tea.
+7|你想买什么？|nǐ xiǎng mǎi shénme?|我想买一个杯子。|wǒ xiǎng mǎi yí ge bēizi.|I want a cup.
+7|这个杯子多少钱？|zhège bēizi duōshao qián?|二十八块。|èrshíbā kuài.|28 yuan.
+8|小猫在哪儿？|xiǎo māo zài nǎr?|小猫在那儿。|xiǎo māo zài nàr.|The cat is there.
+8|你在哪儿工作？|nǐ zài nǎr gōngzuò?|我在学校工作。|wǒ zài xuéxiào gōngzuò.|I work at a school.
+8|你爸爸在家吗？|nǐ bàba zài jiā ma?|不在家。|bú zài jiā.|He's not at home.
+9|桌子上有什么？|zhuōzi shàng yǒu shénme?|桌子上有一个电脑和一本书。|zhuōzi shàng yǒu yí ge diànnǎo hé yì běn shū.|A computer and a book.
+9|我能坐这儿吗？|wǒ néng zuò zhèr ma?|请坐。|qǐng zuò.|Please sit.
+10|现在几点？|xiànzài jǐ diǎn?|现在十点十分。|xiànzài shí diǎn shí fēn.|10:10.
+10|你什么时候去学校？|nǐ shénme shíhou qù xuéxiào?|我七点去学校。|wǒ qī diǎn qù xuéxiào.|At seven.
+11|今天天气怎么样？|jīntiān tiānqì zěnmeyàng?|今天很热。|jīntiān hěn rè.|Very hot.
+11|你身体怎么样？|nǐ shēntǐ zěnmeyàng?|我身体不太好。|wǒ shēntǐ bú tài hǎo.|Not very well.
+12|你在做什么呢？|nǐ zài zuò shénme ne?|我在看书呢。|wǒ zài kàn shū ne.|I'm reading.
+12|你喜欢看电视吗？|nǐ xǐhuan kàn diànshì ma?|我不喜欢看电视。|wǒ bù xǐhuan kàn diànshì.|I don't like TV.

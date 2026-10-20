@@ -1,0 +1,84 @@
+# level|tokens|pinyin|english
+1|你 是 学生 吗 ？|nǐ shì xuésheng ma?|Are you a student?
+1|我 不 是 学生 。|wǒ bú shì xuésheng.|I am not a student.
+1|你 的 名字 是 什么 ？|nǐ de míngzi shì shénme?|What is your name?
+2|对不起 ， 我 的 中文 不 好 。|duìbuqǐ, wǒ de zhōngwén bù hǎo.|Sorry, my Chinese is not good.
+2|我 是 你们 的 中文 老师 。|wǒ shì nǐmen de zhōngwén lǎoshī.|I am your Chinese teacher.
+2|你 好 吗 ？|nǐ hǎo ma?|How are you?
+2|我 很 好 。|wǒ hěn hǎo.|I am very well.
+2|你 叫 什么 名字 ？|nǐ jiào shénme míngzi?|What is your name?
+3|你 是 哪 国 人 ？|nǐ shì nǎ guó rén?|Which country are you from?
+3|我 是 中国 人 。|wǒ shì Zhōngguó rén.|I am Chinese.
+3|他 是 谁 ？|tā shì shéi?|Who is he?
+4|你 今年 多大 了 ？|nǐ jīnnián duō dà le?|How old are you this year?
+4|你 今年 几 岁 了 ？|nǐ jīnnián jǐ suì le?|How old are you this year? (under ten)
+4|你 今年 多少 岁 了 ？|nǐ jīnnián duōshao suì le?|How old are you this year?
+4|你 家 有 几 口 人 ？|nǐ jiā yǒu jǐ kǒu rén?|How many people are in your family?
+4|我 家 有 四 口 人 。|wǒ jiā yǒu sì kǒu rén.|There are four people in my family.
+5|你 有 姐姐 吗 ？|nǐ yǒu jiějie ma?|Do you have an older sister?
+5|我 有 两 个 姐姐 。|wǒ yǒu liǎng ge jiějie.|I have two older sisters.
+5|我 没有 姐姐 。|wǒ méiyǒu jiějie.|I don't have an older sister.
+5|你 会 说 汉语 吗 ？|nǐ huì shuō Hànyǔ ma?|Can you speak Chinese?
+5|我 会 说 汉语 。|wǒ huì shuō Hànyǔ.|I can speak Chinese.
+5|我 不 会 说 汉语 。|wǒ bú huì shuō Hànyǔ.|I cannot speak Chinese.
+5|这个 字 怎么 写 ？|zhège zì zěnme xiě?|How do you write this character?
+5|中国菜 很 好吃 。|Zhōngguó cài hěn hǎochī.|Chinese food is delicious.
+5|你 会 做 中国菜 吗 ？|nǐ huì zuò Zhōngguó cài ma?|Can you cook Chinese food?
+6|今天 几 号 ？|jīntiān jǐ hào?|What is the date today?
+6|今天 星期 几 ？|jīntiān xīngqī jǐ?|What day is it today?
+6|今天 九 月 一 号 。|jīntiān jiǔ yuè yī hào.|Today is September 1st.
+6|昨天 是 几 月 几 号 ？|zuótiān shì jǐ yuè jǐ hào?|What was yesterday's date?
+6|明天 星期六 ， 你 去 学校 吗 ？|míngtiān xīngqīliù, nǐ qù xuéxiào ma?|Tomorrow is Saturday. Are you going to school?
+6|我 去 学校 看书 。|wǒ qù xuéxiào kàn shū.|I go to school to read.
+6|我 二十 岁 。|wǒ èrshí suì.|I am twenty years old.
+7|你 想 喝 什么 ？|nǐ xiǎng hē shénme?|What would you like to drink?
+7|我 想 喝 茶 。|wǒ xiǎng hē chá.|I'd like some tea.
+7|我 想 吃 米饭 。|wǒ xiǎng chī mǐfàn.|I'd like to eat rice.
+7|下午 我 想 去 商店 。|xiàwǔ wǒ xiǎng qù shāngdiàn.|I want to go to the shop this afternoon.
+7|你 想 买 什么 ？|nǐ xiǎng mǎi shénme?|What do you want to buy?
+7|我 想 买 一 个 杯子 。|wǒ xiǎng mǎi yí ge bēizi.|I want to buy a cup.
+7|这 个 杯子 多少 钱 ？|zhège bēizi duōshao qián?|How much is this cup?
+7|你 的 生日 是 几 月 几 号 ？|nǐ de shēngrì shì jǐ yuè jǐ hào?|When is your birthday?
+7|南京大学 很 大 。|Nánjīng Dàxué hěn dà.|Nanjing University is very big.
+8|小猫 在 哪儿 ？|xiǎo māo zài nǎr?|Where is the little cat?
+8|小狗 在 椅子 下面 。|xiǎo gǒu zài yǐzi xiàmian.|The puppy is under the chair.
+8|你 在 哪儿 工作 ？|nǐ zài nǎr gōngzuò?|Where do you work?
+8|我 在 学校 工作 。|wǒ zài xuéxiào gōngzuò.|I work at a school.
+8|我 儿子 在 医院 工作 ， 他 是 医生 。|wǒ érzi zài yīyuàn gōngzuò, tā shì yīshēng.|My son works at a hospital. He is a doctor.
+8|你 爸爸 在 家 吗 ？|nǐ bàba zài jiā ma?|Is your dad at home?
+8|商店 在 学校 左面 。|shāngdiàn zài xuéxiào zuǒmian.|The shop is to the left of the school.
+8|我 在 学校 学习 汉语 。|wǒ zài xuéxiào xuéxí Hànyǔ.|I study Chinese at school.
+8|我 在 商店 买 杯子 。|wǒ zài shāngdiàn mǎi bēizi.|I buy cups at the shop.
+9|桌子 上面 有 一 个 电脑 和 一 本 书 。|zhuōzi shàngmian yǒu yí ge diànnǎo hé yì běn shū.|There is a computer and a book on the table.
+9|学校 里面 有 一 个 商店 。|xuéxiào lǐmian yǒu yí ge shāngdiàn.|There is a shop inside the school.
+9|椅子 下面 没有 小狗 。|yǐzi xiàmian méiyǒu xiǎo gǒu.|There is no puppy under the chair.
+9|我 能 坐 这儿 吗 ？|wǒ néng zuò zhèr ma?|Can I sit here?
+9|我 生病 了 ， 不 能 去 学校 。|wǒ shēngbìng le, bù néng qù xuéxiào.|I am sick, so I can't go to school.
+9|这儿 有 人 吗 ？|zhèr yǒu rén ma?|Is anyone sitting here?
+10|现在 几 点 ？|xiànzài jǐ diǎn?|What time is it now?
+10|现在 十 点 十 分 。|xiànzài shí diǎn shí fēn.|It is ten ten now.
+10|中午 几 点 吃饭 ？|zhōngwǔ jǐ diǎn chī fàn?|What time do you eat at noon?
+10|你 什么 时候 去 学校 ？|nǐ shénme shíhou qù xuéxiào?|When do you go to school?
+10|我 七 点 去 学校 。|wǒ qī diǎn qù xuéxiào.|I go to school at seven.
+10|爸爸 什么 时候 回家 ？|bàba shénme shíhou huí jiā?|When does dad come home?
+10|我 星期一 去 北京 。|wǒ xīngqīyī qù Běijīng.|I am going to Beijing on Monday.
+10|星期五 前 能 回家 吗 ？|xīngqīwǔ qián néng huí jiā ma?|Can you be home before Friday?
+11|今天 天气 怎么样 ？|jīntiān tiānqì zěnmeyàng?|How is the weather today?
+11|天气 太 热 了 。|tiānqì tài rè le.|The weather is too hot.
+11|今天 不 会 下雨 。|jīntiān bú huì xià yǔ.|It won't rain today.
+11|你 身体 怎么样 ？|nǐ shēntǐ zěnmeyàng?|How is your health?
+11|多 吃 些 水果 ， 多 喝 水 。|duō chī xiē shuǐguǒ, duō hē shuǐ.|Eat more fruit and drink more water.
+11|少 吃 蛋糕 。|shǎo chī dàngāo.|Eat less cake.
+12|喂 ， 你 在 做 什么 呢 ？|wèi, nǐ zài zuò shénme ne?|Hello, what are you doing?
+12|我 在 看书 呢 。|wǒ zài kàn shū ne.|I am reading.
+12|我 不 喜欢 看 电视 ， 我 喜欢 看 电影 。|wǒ bù xǐhuan kàn diànshì, wǒ xǐhuan kàn diànyǐng.|I don't like TV; I like movies.
+12|我 现在 给 她 打电话 。|wǒ xiànzài gěi tā dǎ diànhuà.|I'll call her now.
+12|她 在 工作 呢 ， 你 下午 打 吧 。|tā zài gōngzuò ne, nǐ xiàwǔ dǎ ba.|She is working. Call her this afternoon.
+13|他 在 睡觉 呢 。|tā zài shuìjiào ne.|He is sleeping.
+13|她 明天 坐 火车 去 。|tā míngtiān zuò huǒchē qù.|She is going by train tomorrow.
+13|他 在 医院 工作 ， 是 个 医生 。|tā zài yīyuàn gōngzuò, shì ge yīshēng.|He works at a hospital; he is a doctor.
+13|我 想 喝 一 杯 茶 。|wǒ xiǎng hē yì bēi chá.|I want a cup of tea.
+13|你 的 衣服 很 漂亮 。|nǐ de yīfu hěn piàoliang.|Your clothes are very pretty.
+13|我 儿子 在 大学 读书 。|wǒ érzi zài dàxué dú shū.|My son studies at university.
+13|你 怎么 去 那个 饭店 ？|nǐ zěnme qù nàge fàndiàn?|How do you get to that restaurant?
+13|你 爱 吃 什么 水果 ？|nǐ ài chī shénme shuǐguǒ?|Which fruit do you like to eat?

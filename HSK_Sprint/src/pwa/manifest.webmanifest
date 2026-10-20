@@ -1,0 +1,15 @@
+{
+  "name": "HSK Sprint",
+  "short_name": "HSK Sprint",
+  "description": "Active-recall practice for HSK 1",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#E8F0EA",
+  "theme_color": "#0F6E7A",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

@@ -1,0 +1,62 @@
+[
+{"id":"L1","title":"Listening 1 · Tick or cross","part":"Listening","q":"1–5","kind":"tf","instr":"Listen. Does what you hear match the picture?",
+ "qs":[
+  {"audio":"坐出租车","zh":"坐出租车","py":"zuò chūzūchē","en":"take a taxi","fig":{"emoji":"🚴","cap":"cyclist"},"a":false},
+  {"audio":"明天见","zh":"明天见","py":"míngtiān jiàn","en":"see you tomorrow","fig":{"emoji":"👋","cap":"two people saying hi"},"a":true},
+  {"audio":"十二点","zh":"十二点","py":"shí'èr diǎn","en":"twelve o'clock","fig":{"emoji":"🕛","cap":"clock at 12"},"a":true},
+  {"audio":"喝水","zh":"喝水","py":"hē shuǐ","en":"drink water","fig":{"emoji":"🍉","cap":"woman eating watermelon"},"a":false},
+  {"audio":"打电话","zh":"打电话","py":"dǎ diànhuà","en":"make a phone call","fig":{"emoji":"🤫","cap":"two girls whispering"},"a":false}]},
+{"id":"L2","title":"Listening 2 · Pick the picture","part":"Listening","q":"6–10","kind":"mc","instr":"Listen. Choose the matching picture.",
+ "qs":[
+  {"audio":"你的衣服很漂亮。","zh":"你的衣服很漂亮。","py":"nǐ de yīfu hěn piàoliang.","en":"Your clothes are very pretty.","opts":[{"e":"👚","t":"woman in pink top"},{"e":"👠","t":"red high heels"},{"e":"🌹","t":"a rose"}],"a":0},
+  {"audio":"他们在工作。","zh":"他们在工作。","py":"tāmen zài gōngzuò.","en":"They are working.","opts":[{"e":"💃","t":"couple dancing"},{"e":"👭","t":"two girls laughing"},{"e":"💻","t":"two men at a computer"}],"a":2},
+  {"audio":"我朋友是老师。","zh":"我朋友是老师。","py":"wǒ péngyou shì lǎoshī.","en":"My friend is a teacher.","opts":[{"e":"🤵","t":"waiter"},{"e":"🧑‍🏫","t":"teacher at a blackboard"},{"e":"📷","t":"photographer"}],"a":1},
+  {"audio":"李小姐，请坐。","zh":"李小姐，请坐。","py":"Lǐ xiǎojiě, qǐng zuò.","en":"Miss Li, please sit down.","opts":[{"e":"📱","t":"man seated with phone"},{"e":"🤝","t":"handshake"},{"e":"🪑","t":"woman seated on a chair"}],"a":2},
+  {"audio":"我儿子在大学读书。","zh":"我儿子在大学读书。","py":"wǒ érzi zài dàxué dú shū.","en":"My son studies at university.","opts":[{"e":"👧","t":"girl in a red hat"},{"e":"🧑‍🎓","t":"young man with headphones"},{"e":"📚","t":"girl with a stack of books"}],"a":1}]},
+{"id":"L3","title":"Listening 3 · Dialogues","part":"Listening","q":"11–15","kind":"mc","instr":"Listen to the short dialogue. Choose the picture it is about.",
+ "opts":[{"e":"🍲","t":"a dish of food"},{"e":"🛍️","t":"woman with shopping bags"},{"e":"🤝","t":"two people shaking hands"},{"e":"🪑","t":"office chair"},{"e":"🚗","t":"white car"},{"e":"👧","t":"three girls running"}],
+ "qs":[
+  {"audio":"这个椅子多少钱？ 七十块。","zh":"男：这个椅子多少钱？ 女：七十块。","py":"zhège yǐzi duōshao qián? qīshí kuài.","en":"How much is this chair? 70 yuan.","a":3},
+  {"audio":"他会开车吗？ 会。他开车三年多了。","zh":"女：他会开车吗？ 男：会。他开车三年多了。","py":"tā huì kāi chē ma? huì. tā kāi chē sān nián duō le.","en":"Can he drive? Yes, he has driven for over three years.","a":4},
+  {"audio":"你去哪儿了？ 我去买了些东西。","zh":"男：你去哪儿了？ 女：我去买了些东西。","py":"nǐ qù nǎr le? wǒ qù mǎi le xiē dōngxi.","en":"Where did you go? I went to buy some things.","a":1},
+  {"audio":"今天我请你吃饭。 太好了，我想吃中国菜。","zh":"女：今天我请你吃饭。 男：太好了，我想吃中国菜。","py":"jīntiān wǒ qǐng nǐ chī fàn. tài hǎo le, wǒ xiǎng chī Zhōngguó cài.","en":"I'm treating you to a meal today. Great, I want Chinese food.","a":0},
+  {"audio":"他们是谁？ 他们三个都是我的学生。","zh":"男：他们是谁？ 女：他们三个都是我的学生。","py":"tāmen shì shéi? tāmen sān ge dōu shì wǒ de xuésheng.","en":"Who are they? All three are my students.","a":5}]},
+{"id":"L4","title":"Listening 4 · Question and choice","part":"Listening","q":"16–20","kind":"mc","instr":"Listen to the passage and the question. Choose the answer.",
+ "qs":[
+  {"audio":"明天是二月二十五日，星期三。 问：明天是星期几？","zh":"明天是二月二十五日，星期三。问：明天是星期几？","py":"míngtiān shì èr yuè èrshíwǔ rì, xīngqīsān. wèn: míngtiān shì xīngqī jǐ?","en":"Tomorrow is Feb 25, Wednesday. Q: What day is tomorrow?","opts":[{"t":"星期二"},{"t":"星期三"},{"t":"星期五"}],"a":1},
+  {"audio":"我会说汉语，我能写一些汉字。 问：他会什么？","zh":"我会说汉语，我能写一些汉字。问：他会什么？","py":"wǒ huì shuō Hànyǔ, wǒ néng xiě yìxiē Hànzì. wèn: tā huì shénme?","en":"I can speak Chinese and write some characters. Q: What can he do?","opts":[{"t":"开车"},{"t":"做饭"},{"t":"说汉语"}],"a":2},
+  {"audio":"下个月，我和王老师去北京。 问：他和谁去北京？","zh":"下个月，我和王老师去北京。问：他和谁去北京？","py":"xià ge yuè, wǒ hé Wáng lǎoshī qù Běijīng. wèn: tā hé shéi qù Běijīng?","en":"Next month I'm going to Beijing with Teacher Wang. Q: Who is he going with?","opts":[{"t":"老师"},{"t":"妈妈"},{"t":"朋友"}],"a":0},
+  {"audio":"我有一个女儿，今年四岁了。 问：女儿几岁了？","zh":"我有一个女儿，今年四岁了。问：女儿几岁了？","py":"wǒ yǒu yí ge nǚ'ér, jīnnián sì suì le. wèn: nǚ'ér jǐ suì le?","en":"I have a daughter, four this year. Q: How old is she?","opts":[{"t":"4"},{"t":"7"},{"t":"10"}],"a":0},
+  {"audio":"昨天下雨了，很冷。 问：昨天天气怎么样？","zh":"昨天下雨了，很冷。问：昨天天气怎么样？","py":"zuótiān xià yǔ le, hěn lěng. wèn: zuótiān tiānqì zěnmeyàng?","en":"It rained yesterday and was cold. Q: How was the weather?","opts":[{"t":"很好"},{"t":"很热"},{"t":"很冷"}],"a":2}]},
+{"id":"R1","title":"Reading 1 · Picture and word","part":"Reading","q":"21–25","kind":"tf","instr":"Does the word match the picture?",
+ "qs":[
+  {"zh":"猫","py":"māo","en":"cat","fig":{"emoji":"🐶","cap":"a dog"},"a":false},
+  {"zh":"衣服","py":"yīfu","en":"clothes","fig":{"emoji":"👕","cap":"a red T-shirt"},"a":true},
+  {"zh":"水果","py":"shuǐguǒ","en":"fruit","fig":{"emoji":"🍍","cap":"pineapple, bananas, watermelon"},"a":true},
+  {"zh":"坐","py":"zuò","en":"to sit","fig":{"emoji":"🪑","cap":"man sitting back in a chair"},"a":true},
+  {"zh":"米饭","py":"mǐfàn","en":"cooked rice","fig":{"emoji":"🍜","cap":"a bowl of noodles"},"a":false}]},
+{"id":"R2","title":"Reading 2 · Sentence and picture","part":"Reading","q":"26–30","kind":"mc","instr":"Choose the picture that matches the sentence.",
+ "opts":[{"e":"🙋","t":"two students, one raising a hand"},{"e":"☕","t":"a cup of tea or coffee"},{"e":"🚄","t":"a high-speed train"},{"e":"🧑‍⚕️","t":"a doctor"},{"e":"📖","t":"a girl reading"},{"e":"😴","t":"a man asleep in a chair"}],
+ "qs":[
+  {"zh":"他在睡觉呢。","py":"tā zài shuìjiào ne.","en":"He is sleeping.","a":5},
+  {"zh":"她明天坐火车去。","py":"tā míngtiān zuò huǒchē qù.","en":"She is going by train tomorrow.","a":2},
+  {"zh":"他在医院工作，是个医生。","py":"tā zài yīyuàn gōngzuò, shì ge yīshēng.","en":"He works at a hospital; he is a doctor.","a":3},
+  {"zh":"我想喝一杯茶。","py":"wǒ xiǎng hē yì bēi chá.","en":"I want a cup of tea.","a":1},
+  {"zh":"他们是同学。","py":"tāmen shì tóngxué.","en":"They are classmates.","a":0}]},
+{"id":"R3","title":"Reading 3 · Question and answer","part":"Reading","q":"31–35","kind":"mc","instr":"Choose the reply that answers each question.",
+ "opts":[{"t":"中国人。","p":"Zhōngguórén."},{"t":"7点了。","p":"qī diǎn le."},{"t":"苹果。","p":"píngguǒ."},{"t":"20块。","p":"èrshí kuài."},{"t":"坐出租车。","p":"zuò chūzūchē."},{"t":"好的，谢谢！","p":"hǎo de, xièxie!"}],
+ "qs":[
+  {"zh":"你怎么去那个饭店？","py":"nǐ zěnme qù nàge fàndiàn?","en":"How do you get to that restaurant?","a":4},
+  {"zh":"现在几点了？","py":"xiànzài jǐ diǎn le?","en":"What time is it now?","a":1},
+  {"zh":"你爱吃什么水果？","py":"nǐ ài chī shénme shuǐguǒ?","en":"What fruit do you like?","a":2},
+  {"zh":"这个小杯子多少钱？","py":"zhège xiǎo bēizi duōshao qián?","en":"How much is this little cup?","a":3},
+  {"zh":"你是哪国人？","py":"nǐ shì nǎ guó rén?","en":"Where are you from?","a":0}]},
+{"id":"R4","title":"Reading 4 · Fill the gap","part":"Reading","q":"36–40","kind":"mc","instr":"Choose the word that fits the gap.",
+ "opts":[{"t":"家","p":"jiā"},{"t":"火车站","p":"huǒchēzhàn"},{"t":"对不起","p":"duìbuqǐ"},{"t":"名字","p":"míngzi"},{"t":"看见","p":"kànjiàn"},{"t":"学习","p":"xuéxí"}],
+ "qs":[
+  {"zh":"她上午在学校（　　）。","py":"tā shàngwǔ zài xuéxiào ( ).","en":"She studies at school in the morning.","a":5},
+  {"zh":"我7点30分去（　　），10点前回来。","py":"wǒ qī diǎn sānshí fēn qù ( ), shí diǎn qián huílai.","en":"I go to the train station at 7:30, back before 10.","a":1},
+  {"zh":"喂，张先生在（　　）吗？","py":"wèi, Zhāng xiānsheng zài ( ) ma?","en":"Hello, is Mr. Zhang at home?","a":0},
+  {"zh":"女：（　　），我今天不能和你去看医生了。 男：没关系。","py":"( ), wǒ jīntiān bù néng hé nǐ qù kàn yīshēng le. méi guānxi.","en":"Sorry, I can't go to the doctor with you today. It's okay.","a":2},
+  {"zh":"男：你（　　）爸爸的衣服了吗？ 女：在桌子后面。","py":"nǐ ( ) bàba de yīfu le ma? zài zhuōzi hòumian.","en":"Did you see dad's clothes? Behind the table.","a":4}]}
+]

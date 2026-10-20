@@ -1,0 +1,31 @@
+{
+  "name": "hsk-sprint",
+  "version": "1.1.0",
+  "description": "HSK 1 Sprint: active-recall practice for HSK 1",
+  "author": { "name": "Kamil Nadaf", "email": "maruffnadaf@gmail.com" },
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "prepare-site": "node -e \"require('fs').cpSync('../site','site',{recursive:true})\"",
+    "start": "npm run prepare-site && electron .",
+    "dist": "npm run prepare-site && electron-builder",
+    "dist:mac": "npm run prepare-site && electron-builder --mac",
+    "dist:win": "npm run prepare-site && electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^44.9.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.kamilnadaf.hsksprint",
+    "productName": "HSK Sprint",
+    "copyright": "Copyright (c) 2026 Kamil Nadaf",
+    "files": ["main.js", "preload.js", "site/**/*", "build/icon.png"],
+    "directories": { "buildResources": "build", "output": "dist" },
+    "artifactName": "HSK-Sprint-${version}-${os}-${arch}.${ext}",
+    "mac": { "category": "public.app-category.education", "icon": "build/icon.png", "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }] },
+    "win": { "icon": "build/icon.png", "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "linux": { "icon": "build/icon.png", "category": "Education", "target": ["AppImage"] },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+  }
+}
