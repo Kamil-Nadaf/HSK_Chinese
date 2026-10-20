@@ -4,25 +4,73 @@ Active-recall practice for HSK 1: spaced-repetition cards, quizzes, typing, stro
 
 Developed by Kamil Nadaf. MIT licence (see the repo `LICENSE`).
 
-## Download (no technical knowledge needed)
+## Install
 
-Open the **Releases** page of this repository (right-hand side of the repo home page) and download the latest version for your device:
-
-- **Android phone:** `...-android.apk`. Open it on the phone. If Android asks, allow installs from this source, then tap Install.
-- **Mac:** `HSK-Practice-Sheet-...-mac-arm64.dmg` for M1/M2/M3/M4 Macs, `...-mac-x64.dmg` for older Intel Macs. Open it and drag HSK Practice Sheet into Applications. The first time, right-click the app and choose Open.
-- **Windows:** `HSK-Practice-Sheet-...-win-x64.exe`. Double-click it and follow the installer. If Windows warns about an unknown publisher, click More info, then Run anyway.
-- **Linux:** `HSK-Practice-Sheet-...-linux-x86_64.AppImage` (make it executable with `chmod +x`, then double-click or run it) or the `.deb` for Debian and Ubuntu (`sudo apt install ./file.deb`).
-- **iPhone and iPad:** there is no App Store build, because Apple only allows installs through a paid developer account. Instead open the web app in Safari at `https://kamil-nadaf.github.io/HSK_Chinese/`, tap Share, then **Add to Home Screen**. It then opens full screen like an app and works offline.
-
-Not sure which Mac you have? Apple menu, About This Mac: "Apple M..." means arm64, "Intel" means x64.
+Go to the **Releases** page of this repository (right-hand side of the repo home page, or the "Releases" link under About) and open the newest version. Under **Assets**, download the file for your device. Then follow the steps below. Nothing else needs to be installed.
 
 Your progress is saved on each device separately. Use Settings, Copy backup to move it between devices.
 
----
+### Android phone or tablet
 
-## Use it in a browser (GitHub Pages)
+1. On the phone, open the Releases page and download the file ending in `-android.apk`.
+2. Open the downloaded file (from the notification, or from the Downloads app).
+3. If Android says it can't install apps from this source, tap **Settings**, switch on **Allow from this source**, then go back.
+4. Tap **Install**, then **Open**.
+5. If Play Protect shows a warning, tap **More details**, then **Install anyway**. The app is not on the Play Store.
+6. To get daily reminders, allow notifications when asked.
 
-Once Pages is switched on (see below), the web app lives at `https://<your-user>.github.io/HSK_Chinese/`. Open it on a phone or computer and use the browser's Install / Add to Home Screen option. After the first visit it also works offline.
+To update, install a newer APK over the old one. Your progress is kept.
+
+### Mac
+
+1. Download the `.dmg`: `...-mac-arm64.dmg` for Apple Silicon (M1, M2, M3, M4), `...-mac-x64.dmg` for Intel. Not sure? Apple menu, **About This Mac**: "Chip: Apple M..." means arm64, "Processor: Intel" means x64.
+2. Double-click the `.dmg`. A window opens.
+3. Drag **HSK Practice Sheet** onto the **Applications** folder.
+4. Open **Applications**, **right-click** HSK Practice Sheet and choose **Open**, then click **Open** again. (The app is not notarised by Apple, so a normal double-click is blocked the first time. After this it opens normally.)
+5. If macOS still refuses: System Settings, **Privacy & Security**, scroll down and click **Open Anyway** next to HSK Practice Sheet.
+
+### Windows
+
+1. Download the `...-win-x64.exe` installer.
+2. Double-click it.
+3. If a blue "Windows protected your PC" box appears, click **More info**, then **Run anyway**. (The installer is not signed with a paid certificate.)
+4. Choose an install folder or keep the default, click **Install**, then **Finish**.
+5. Open **HSK Practice Sheet** from the Start menu or the desktop shortcut.
+
+### Linux
+
+Choose one:
+
+- **AppImage** (works on most distributions): download the file ending in `.AppImage`, then in a terminal run
+  ```
+  chmod +x HSK-Practice-Sheet-*.AppImage
+  ./HSK-Practice-Sheet-*.AppImage
+  ```
+  Or right-click the file, Properties, Permissions, tick **Allow executing as a program**, and double-click it. If it won't start on Ubuntu 22.04 or newer, install FUSE: `sudo apt install libfuse2`.
+- **Debian, Ubuntu, Mint** (`.deb`): download the file ending in `.deb`, then run
+  ```
+  sudo apt install ./HSK-Practice-Sheet-*.deb
+  ```
+  and start **HSK Practice Sheet** from the app menu.
+
+### iPhone and iPad
+
+There is no App Store version, because Apple only allows installs through a paid developer account. Use the web app instead:
+
+1. Open **Safari** (it must be Safari) and go to `https://kamil-nadaf.github.io/HSK_Chinese/`.
+2. Tap the **Share** button (square with an arrow).
+3. Scroll down and tap **Add to Home Screen**, then **Add**.
+4. Open it from the new icon on the Home Screen. It runs full screen and works offline after the first visit.
+
+Daily reminders are not supported on iPhone and iPad. Use the Reminders app if you want a nudge.
+
+### In any browser
+
+Open `https://kamil-nadaf.github.io/HSK_Chinese/` on a phone or computer. In Chrome or Edge you can click the install icon in the address bar to install it as an app. After the first visit it also works offline.
+
+### On a server (Docker)
+
+`docker compose up -d --build` in the `HSK_Sprint` folder, then open `http://server:8088`. Or pull `ghcr.io/<owner>/hsk-sprint:latest`.
 
 ---
 
@@ -34,18 +82,14 @@ Today screen, **+ Add new words**:
 - Or import a `.docx`, `.txt`, `.md` or `.csv` file. Lines like `咖啡 | ka1 fei1 | coffee`, a table, or just a list of words all work. Headings such as `Lecture 14`, `Lesson 14` or `第十四课` tag the words below them automatically. Old `.doc` files must be saved as `.docx` first.
 - Pinyin and meanings come from the bundled CC-CEDICT dictionary (`site/dict.js`), so this works offline.
 
-## Profile, theme and reminders
+## Profile, theme, goal and reminders
 
-Tap the red seal at the top right of any main screen. It opens one sheet with your profile, light/dark and a theme (Jade exercise book, Paper, Glass, Indigo, Plum, Ink), daily reminder, study options, library, backup and about. The profile (name, email) is stored on the device only; there is no account. Daily reminders are real notifications in the Android app and the desktop app. In a plain browser they only fire while the page is open.
+Tap the 汉语 logo (or the seal at the top right) to open **Profile and settings**. It has your profile, theme, daily reminder, goal, study options, backup and About. The profile (name, email) is stored on the device only; there is no account.
 
-## Install
-
-| Platform | How |
-|---|---|
-| Android | Download `app-debug.apk` from the latest Release or Actions run, allow "install unknown apps", install. |
-| macOS | Download the `.dmg` (Apple Silicon: `arm64`, Intel: `x64`). It is not notarised: right-click the app, choose Open, then Open again. |
-| Windows | Run the `.exe` installer. SmartScreen may warn about an unknown publisher: More info, Run anyway. |
-| Server | `docker compose up -d --build` then open `http://server:8088`, or pull `ghcr.io/<owner>/hsk-sprint:latest`. |
+- **Themes:** Auto, Light, Dark, Paper (black and white) and Glass. Light and Dark also take an accent colour (Jade, Indigo, Plum, Rose, Amber, Ink).
+- **Goal:** tap the days-left pill on the Today screen to set what you are working towards, the date, and how many new words a day (or automatic).
+- **Dictionary:** the Dict tab searches 汉字, pinyin or English and can add words to any lecture.
+- **Reminders** are real notifications in the Android app and the desktop apps. In a plain browser they only fire while the page is open.
 
 ## Turn on GitHub Pages (once)
 
@@ -55,7 +99,7 @@ Repository Settings, Pages, Source: **GitHub Actions**. Then run "Publish web ap
 
 - `site/` the built web app (`index.html`, `dict.js`, `audio/` with 1050 recorded clips)
 - `android/` WebView wrapper (Gradle, debug-signed with the committed `debug.keystore` so updates install over older builds)
-- `desktop/` Electron wrapper for macOS and Windows
+- `desktop/` Electron wrapper for macOS, Windows and Linux
 - `src/` sources that generate `site/index.html`: `template.html`, `vocab.txt`, `sentences.txt`, `qa.txt`, `sample.json`, `build.py`, `fonts/` (IBM Plex Sans, SIL OFL) and `pwa/` (manifest, service worker, icons)
 
 ## GitHub Actions
@@ -64,9 +108,9 @@ Repository Settings, Pages, Source: **GitHub Actions**. Then run "Publish web ap
 
 - Pages: `pages.yml` publishes `HSK_Sprint/site` to GitHub Pages on every push to `main` that changes it
 - Android APK
-- macOS `.dmg` and Windows `.exe`
+- macOS `.dmg`, Windows `.exe`, Linux `.AppImage` and `.deb`
 - Docker image pushed to GitHub Container Registry (not on pull requests)
-- On a tag like `v1.1.0` it also publishes a GitHub Release with the APK, `.dmg` and `.exe`
+- On a tag like `v1.1.0` it also publishes a GitHub Release with the APK, `.dmg`, `.exe`, `.AppImage` and `.deb`
 
 ## Rebuilding `site/index.html`
 
