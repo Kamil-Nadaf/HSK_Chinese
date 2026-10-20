@@ -33,7 +33,7 @@ jobs:
           ./gradlew --no-daemon assembleDebug
       - uses: actions/upload-artifact@v4
         with:
-          name: HSK-Sprint-android
+          name: HSK-Practice-Sheet-android
           path: HSK_Sprint/android/app/build/outputs/apk/debug/app-debug.apk
 
   desktop:
@@ -45,6 +45,7 @@ jobs:
         include:
           - { name: macOS, os: macos-latest, script: "dist:mac" }
           - { name: Windows, os: windows-latest, script: "dist:win" }
+          - { name: Linux, os: ubuntu-latest, script: "dist:linux" }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -60,10 +61,12 @@ jobs:
         run: npm run ${{ matrix.script }} -- --publish never
       - uses: actions/upload-artifact@v4
         with:
-          name: HSK-Sprint-${{ matrix.name }}
+          name: HSK-Practice-Sheet-${{ matrix.name }}
           path: |
             HSK_Sprint/desktop/dist/*.dmg
             HSK_Sprint/desktop/dist/*.exe
+            HSK_Sprint/desktop/dist/*.AppImage
+            HSK_Sprint/desktop/dist/*.deb
 
   docker:
     name: Docker image
@@ -109,8 +112,8 @@ jobs:
       - name: Collect files
         run: |
           mkdir release
-          cp out/HSK-Sprint-android/app-debug.apk release/HSK-Sprint-${{ github.ref_name }}-android.apk
-          find out -name '*.dmg' -o -name '*.exe' | xargs -I{} cp {} release/
+          cp out/HSK-Practice-Sheet-android/app-debug.apk release/HSK-Practice-Sheet-${{ github.ref_name }}-android.apk
+          find out \( -name '*.dmg' -o -name '*.exe' -o -name '*.AppImage' -o -name '*.deb' \) -exec cp {} release/ \;
           ls -l release
       - uses: softprops/action-gh-release@v2
         with:
