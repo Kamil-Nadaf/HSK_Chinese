@@ -4,6 +4,7 @@
   "description": "HSK Practice Sheet: active-recall practice for HSK 1",
   "author": { "name": "Kamil Nadaf", "email": "maruffnadaf@gmail.com" },
   "license": "MIT",
+  "homepage": "https://github.com/Kamil-Nadaf/HSK_Chinese",
   "main": "main.js",
   "scripts": {
     "prepare-site": "node -e \"require('fs').cpSync('../site','site',{recursive:true})\"",
