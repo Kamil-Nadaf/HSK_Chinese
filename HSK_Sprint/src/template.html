@@ -318,6 +318,13 @@ textarea{width:100%;min-height:70px;font-size:12px}
   .fc.flip .info{animation:pop .22s ease-out}
   @keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 }
+.tgrid{display:grid;grid-template-columns:1fr;gap:10px}
+.wgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.wc{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 8px;color:var(--ink)}
+.wc:active{background:var(--accent-soft)}
+.wh{font-size:30px;line-height:1.15}.wp{font-size:15px}.we{font-size:13px;color:var(--muted)}
+@media (min-width:560px){.wgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.tgrid{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.wgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:420px){.opts.two{grid-template-columns:1fr}}
 @media (max-width:520px){.top .brand{flex-direction:column;align-items:flex-start;gap:0}.top .brand b{font-size:24px;line-height:1.1}.top .brand span{font-size:12px}.pill{padding:6px 10px;font-size:12.5px}}
 button.brand,button.sbrand{background:none;border:0;padding:0;color:var(--ink);text-align:left}
@@ -368,6 +375,8 @@ const addDays=(s,n)=>{const d=new Date(s+'T12:00');d.setDate(d.getDate()+n);retu
 const V=DATA.vocab, BYID={}, BYH={};
 V.forEach(v=>{BYID[v.id]=v;if(!BYH[v.h])BYH[v.h]=v});
 const LESSONS=DATA.lessons;
+/* topic word lists from the class word sheet: [title,[[汉字,pinyin,English],...]] */
+const SECS=[["Greetings & Polite Phrases",[["你好","nǐ hǎo","hello / hi"],["对不起","duì bu qǐ","sorry"],["不好意思","bù hǎo yì si","excuse me / sorry"],["没关系","méi guān xi","it's okay / no problem"],["谢谢","xiè xie","thank you"],["不客气","bú kè qi","you're welcome"],["再见","zài jiàn","goodbye"],["请问","qǐng wèn","excuse me (may I ask)"],["喂","wèi","hello (on phone)"]]],["Pronouns & People",[["我","wǒ","I / me"],["你","nǐ","you"],["您","nín","you (polite)"],["他","tā","he"],["她","tā","she"],["我们","wǒ men","we"],["你们","nǐ men","you (plural)"],["他们","tā men","they"],["谁","shuí","who"],["人","rén","person"],["朋友","péng you","friend"],["先生","xiān sheng","Mr."],["小姐","xiǎo jiě","Miss"],["同学","tóng xué","classmate"],["小朋友","xiǎo péng you","children"]]],["Numbers & Counting",[["一","yī","one"],["二","èr","two"],["三","sān","three"],["四","sì","four"],["五","wǔ","five"],["六","liù","six"],["七","qī","seven"],["八","bā","eight"],["九","jiǔ","nine"],["十","shí","ten"],["零","líng","zero"],["百","bǎi","hundred"],["两","liǎng","two (before measure word)"],["几","jǐ","how many (small #)"],["多少","duō shao","how many / how much"],["第一","dì yī","first"],["口","kǒu","MW for family members"]]],["Countries & Nationality",[["中国","Zhōng guó","China"],["美国","Měi guó","America"],["英国","Yīng guó","England"],["德国","Dé guó","Germany"],["法国","Fǎ guó","France"],["人","rén","person → 中国人 = Chinese"],["哪国","nǎ guó","which country"]]],["Family",[["家","jiā","family / home"],["爸爸","bà ba","dad"],["妈妈","mā ma","mom"],["哥哥","gē ge","older brother"],["姐姐","jiě jie","older sister"],["弟弟","dì di","younger brother"],["妹妹","mèi mei","younger sister"],["爷爷","yé ye","grandpa (dad's side)"],["奶奶","nǎi nai","grandma (dad's side)"],["外公","wài gōng","grandpa (mom's side)"],["外婆","wài pó","grandma (mom's side)"],["儿子","ér zi","son"],["女儿","nǚ ér","daughter"],["孩子","hái zi","child"]]],["Time & Calendar",[["今天","jīn tiān","today"],["昨天","zuó tiān","yesterday"],["明天","míng tiān","tomorrow"],["前天","qián tiān","day before yesterday"],["后天","hòu tiān","day after tomorrow"],["今年","jīn nián","this year"],["去年","qù nián","last year"],["明年","míng nián","next year"],["这个月","zhè ge yuè","this month"],["这个星期","zhè ge xīng qī","this week"],["现在","xiàn zài","now"],["点","diǎn","o'clock"],["分","fēn","minute"],["半","bàn","half (past)"],["一刻","yí kè","a quarter"],["年","nián","year"],["月","yuè","month"],["号","hào","date"],["星期","xīng qī","week"]]],["Times of Day",[["早上","zǎo shang","early morning"],["上午","shàng wǔ","late morning"],["中午","zhōng wǔ","noon"],["下午","xià wǔ","afternoon"],["晚上","wǎn shang","evening"],["夜里","yè lǐ","night"],["早饭","zǎo fàn","breakfast"],["午饭","wǔ fàn","lunch"],["晚饭","wǎn fàn","dinner"]]],["School & Study",[["学生","xué sheng","student"],["老师","lǎo shī","teacher"],["学校","xué xiào","school"],["大学","dà xué","university"],["小学","xiǎo xué","primary school"],["学习","xué xí","study / learn"],["汉语","Hàn yǔ","Chinese language"],["中文","Zhōng wén","Chinese language"],["汉字","Hàn zì","Chinese characters"],["书","shū","book"],["本子","běn zi","notebook"],["上课","shàng kè","class begins"],["下课","xià kè","class ends"]]],["Food & Drink",[["吃","chī","eat"],["喝","hē","drink"],["茶","chá","tea"],["水","shuǐ","water"],["米饭","mǐ fàn","cooked rice"],["菜","cài","dish / food"],["好吃","hǎo chī","delicious"],["水果","shuǐ guǒ","fruit"],["苹果","píng guǒ","apple"]]],["Shopping & Money",[["买","mǎi","buy"],["商店","shāng diàn","shop"],["杯子","bēi zi","cup"],["东西","dōng xi","things / stuff"],["钱","qián","money"],["块","kuài","yuan"],["毛","máo","jiao (0.1 yuan)"],["个","gè","general measure word"],["只","zhī","MW for cats/dogs"],["本","běn","MW for books"],["多少","duō shao","how much"]]],["Places & Directions",[["在","zài","at / in / on"],["这儿","zhèr","here"],["那儿","nàr","there"],["哪儿","nǎr","where"],["上面","shàng mian","on / above"],["下面","xià mian","under"],["前面","qián mian","front"],["后面","hòu mian","behind"],["里面","lǐ mian","inside"],["外面","wài mian","outside"],["左面","zuǒ mian","left"],["右面","yòu mian","right"],["医院","yī yuàn","hospital"],["医生","yī shēng","doctor"],["桌子","zhuō zi","table"],["椅子","yǐ zi","chair"],["电脑","diàn nǎo","computer"],["工作","gōng zuò","work"]]],["Core Verbs",[["是","shì","is / am / are"],["有","yǒu","have / there is"],["没有","méi yǒu","don't have"],["去","qù","go"],["来","lái","come"],["回","huí","return"],["坐","zuò","sit / take (vehicle)"],["住","zhù","live / stay"],["说","shuō","speak"],["写","xiě","write"],["读","dú","read aloud"],["看","kàn","look / watch"],["听","tīng","listen"],["想","xiǎng","want / would like"],["吃","chī","eat"],["喝","hē","drink"],["买","mǎi","buy"],["做","zuò","make / cook"],["开","kāi","drive / open"],["喜欢","xǐ huan","like"],["睡觉","shuì jiào","sleep"],["认识","rèn shi","know (a person)"],["看见","kàn jiàn","see"],["打电话","dǎ diàn huà","make a phone call"]]],["Can / Cannot",[["会","huì","can (learned skill)"],["不会","bú huì","cannot (learned)"],["能","néng","can (able / allowed)"],["不能","bù néng","cannot (condition)"],["可以","kě yǐ","may / OK"]]],["Adjectives & Degree",[["大","dà","big"],["小","xiǎo","small"],["多","duō","many"],["少","shǎo","few"],["好","hǎo","good"],["热","rè","hot"],["冷","lěng","cold"],["漂亮","piào liang","pretty"],["高兴","gāo xìng","happy"],["贵","guì","expensive"],["有意思","yǒu yì si","interesting"],["很","hěn","very"],["太...了","tài … le","too / so …!"],["有点儿","yǒu diǎnr","a little"],["不太","bù tài","not very"],["一点儿","yī diǎnr","a little bit"],["不少","bù shǎo","quite a few"]]],["Question Words & Particles",[["什么","shén me","what"],["谁","shuí","who"],["哪","nǎ","which"],["哪儿","nǎr","where"],["怎么","zěn me","how"],["怎么样","zěn me yàng","how is it"],["什么时候","shén me shí hou","when"],["吗","ma","yes/no question"],["呢","ne","how about / in progress"],["了","le","completed action"],["的","de","'s / of"],["吧","ba","suggestion"],["也","yě","also"],["都","dōu","all"],["和","hé","and"]]],["Weather & Body",[["天气","tiān qì","weather"],["下雨","xià yǔ","to rain"],["晴天","qíng tiān","sunny day"],["多云","duō yún","cloudy"],["阴天","yīn tiān","overcast"],["下雪","xià xuě","to snow"],["身体","shēn tǐ","body"],["头","tóu","head"],["眼睛","yǎn jing","eye"],["手","shǒu","hand"],["脚","jiǎo","foot"],["爱","ài","love / like"],["猫","māo","cat"],["狗","gǒu","dog"]]]];
 const lname=k=>k==='S'?'Sample paper extras':'Lecture '+k;
 const lshort=k=>k==='S'?'S':k;
 const fz=s=>s.t.map((x,i)=>x+(s.pu[i]||'')).join('');
@@ -479,16 +488,17 @@ function accuracy(){let ok=0,bad=0;Object.values(S.cards).forEach(c=>{ok+=c.ok;b
 
 /* ---------- router ---------- */
 let view='home',vp={};
+let prevView0=0;
 const TABS=[['home','Today','今'],['cards','Cards','卡'],['quiz','Quiz','测'],['write','Write','写'],['exam','Exam','考'],['dict','Dict','典']];
 let prevView='home',prevVp={};
 function go(v,p){view=v;vp=p||{};stopTimers();render();window.scrollTo(0,0)}
 function stopTimers(){clearTimeout(autoT);stopAudio()}
 function mount(html){$('#view').innerHTML=html}
-function renderTabs(){const main=['home','cards','quiz','write','exam'];const cur=({study:'cards',type:'quiz',build:'quiz',qz:'quiz',qres:'quiz',wsess:'write',ex:'exam',exres:'exam'})[view]||view;
+function renderTabs(){const main=['home','cards','quiz','write','exam'];const cur=({learn:'cards',sec:'cards',study:'cards',type:'quiz',build:'quiz',qz:'quiz',qres:'quiz',wsess:'write',ex:'exam',exres:'exam'})[view]||view;
   $('#tabs').innerHTML=`<button class="sbrand" data-act="settings" aria-label="Profile and settings"><b>汉语</b><span>HSK Practice Sheet</span></button>`+TABS.map(t=>`<button class="tab" data-act="tab" data-v="${t[0]}" ${t[0]===cur?'aria-current="page"':''}><span class="g">${t[2]}</span><span class="n">${t[1]==='Dict'?'Dict<span class="dx">ionary</span>':t[1]}</span></button>`).join('')}
-function updateMe(){const b=$('#me'),show=['home','cards','quiz','write','exam','dict'].includes(view);if(!b)return;b.hidden=!show;document.body.classList.toggle('hasme',show);
+function updateMe(){const b=$('#me'),show=['home','cards','quiz','write','exam','dict','learn','sec'].includes(view);if(!b)return;b.hidden=!show;document.body.classList.toggle('hasme',show);
   b.textContent=((S.profile&&S.profile.name||'').trim().charAt(0).toUpperCase())||'学'}
-function render(){renderTabs();updateMe();document.body.classList.toggle('w',view==='home');({me:vMe,dict:vDict,home:vHome,cards:vCards,quiz:vQuiz,write:vWrite,exam:vExam,study:vStudy,qz:vQz,qres:vQres,type:vType,build:vBuild,wsess:vWsess,ex:vEx,exres:vExres})[view]()}
+function render(){renderTabs();updateMe();document.body.classList.toggle('w',view==='home');({learn:vLearn,sec:vSec,me:vMe,dict:vDict,home:vHome,cards:vCards,quiz:vQuiz,write:vWrite,exam:vExam,study:vStudy,qz:vQz,qres:vQres,type:vType,build:vBuild,wsess:vWsess,ex:vEx,exres:vExres})[view]()}
 
 /* ---------- shared UI bits ---------- */
 function scopeChips(){const sc=S.set.scope;
@@ -548,6 +558,7 @@ function vHome(){
   <section class="sec"><h2>Reference</h2><div class="row wrap">
     <button class="btn" data-act="grammar">Grammar patterns</button>
     <button class="btn" data-act="start-build">Sentence builder</button>
+    <button class="btn" data-act="tab" data-v="learn">Words by topic</button>
     <button class="btn" data-act="tab" data-v="dict">Dictionary</button>
     <button class="btn" data-act="addwords">+ Add new words</button></div></section>
   </div></div>`);
@@ -558,7 +569,10 @@ function vCards(){
   const items=pool();const due=dueNow(items).length,un=unseen(items).length;
   mount(`
   <div class="top"><h1>Flash cards</h1></div>
-  <section class="sec"><h2>Which lessons</h2>${scopeChips()}${scopeNote()}</section>
+  <section class="sec"><h2>Step 1: read the words</h2>
+    <button class="btn block" data-act="tab" data-v="learn">Learn words by topic (pinyin and meaning)</button>
+    <p class="small muted">${SECS.length} topics from your word sheet. Read and say them aloud first, then practise them as flash cards.</p></section>
+  <section class="sec"><h2>Step 2: flash cards</h2><p class="small muted">Choose which lessons to practise.</p>${scopeChips()}${scopeNote()}</section>
   <section class="sec"><h2>Card style</h2>
     <div class="seg" role="group" aria-label="Card style">
     ${[['auto','Auto'],['see','汉字 → meaning'],['recall','Meaning → 汉字'],['listen','Listen']].map(a=>`<button aria-pressed="${S.set.dir===a[0]}" data-act="dir" data-d="${a[0]}">${a[1]}</button>`).join('')}</div>
@@ -570,6 +584,23 @@ function vCards(){
     <button class="btn block" data-act="study" data-m="weak">Weak words only</button>
   </section>`);
 }
+
+/* ---------- LEARN WORDS BY TOPIC ---------- */
+const secDone=()=>S.secDone||(S.secDone={});
+function vLearn(){const sd=secDone(),n=Object.keys(sd).filter(k=>sd[k]).length;
+  mount(`<div class="top"><div class="brand"><b>读</b><span>Learn words first</span></div></div>
+  <section class="card"><b>How it works</b><p class="small muted" style="margin-top:6px">1. Open a topic and read each word: 汉字, pinyin, meaning. Tap a word to hear it and say it aloud.<br>2. When you have read it, tap <b>Practise as flash cards</b> to fix the words in memory.</p>
+  <p class="small" style="margin-top:8px">${n} of ${SECS.length} topics read</p></section>
+  <div class="tgrid">${SECS.map((s,i)=>`<button class="lesson" data-act="sec" data-i="${i}"><div class="lt"><span class="ln">${i+1}</span><span class="nm">${esc(s[0])}</span><span class="ct num">${sd[i]?'✓ ':''}${s[1].length}</span></div>
+    <div class="small muted hz" style="margin-top:6px;text-align:left">${esc(s[1].slice(0,5).map(w=>w[0]).join('  '))}</div></button>`).join('')}</div>`)}
+function ensureSec(i){let n=0;SECS[i][1].forEach(w=>{if(!BYH[w[0]]&&addEntry(w[0],joinPy(w[1]),w[2],'13'))n++});if(n)saveNow();return n}
+function vSec(){const i=vp.i||0,s=SECS[i];if(!s)return go('learn');const sd=secDone();
+  mount(`<div class="top"><button class="btn sm" data-act="tab" data-v="learn">← Topics</button><div class="sp"></div><span class="small muted">Topic ${i+1} of ${SECS.length}</span></div>
+  <section class="card"><h2 style="font-size:22px">${esc(s[0])}</h2><p class="small muted" style="margin-top:4px">Say aloud: 汉字, then pinyin, then meaning. Tap a card to hear it. Cover the pinyin and meaning to test yourself.</p></section>
+  <div class="wgrid">${s[1].map(w=>`<button class="wc" data-act="say" data-t="${esc(w[0])}" aria-label="Play ${esc(w[0])}"><span class="hz wh">${esc(w[0])}</span><span class="py wp">${esc(w[1])}</span><span class="we">${esc(w[2])}</span></button>`).join('')}</div>
+  <div class="row wrap"><button class="btn primary" data-act="sec-cards" data-i="${i}">Practise as flash cards</button>
+    <button class="btn" data-act="sec-read" data-i="${i}" aria-pressed="${!!sd[i]}">${sd[i]?'✓ Read':'Mark as read'}</button></div>
+  <div class="row"><button class="btn sm" data-act="sec" data-i="${i-1}" ${i?'':'disabled'}>← Previous topic</button><div class="sp"></div><button class="btn sm" data-act="sec" data-i="${i+1}" ${i<SECS.length-1?'':'disabled'}>Next topic →</button></div>`)}
 
 /* ---------- STUDY ---------- */
 let ST=null,autoT=null;
@@ -1213,6 +1244,12 @@ const A={
     AWP=null;if(n){S.lec=L_;saveNow()}openAdd(`${n} words added`+(n?` (lecture ${L_}${useH?' or the heading in the file':''})`:''),L_);if(n)render()},
   'aw-del'(d){const c=S.custom||[],w=c[+d.i];if(!w)return;c.splice(+d.i,1);delete S.cards[w.h+'|'+w.p];saveNow();location.reload()},
   profile(){openSettings()},
+  sec(d){const i=+d.i;if(i>=0&&i<SECS.length)go('sec',{i})},
+  'sec-read'(d){const sd=secDone();sd[d.i]=!sd[d.i];saveNow();vSec();window.scrollTo(0,document.body.scrollHeight)},
+  'sec-cards'(d){const i=+d.i;ensureSec(i);const items=SECS[i][1].map(w=>BYH[w[0]]).filter(Boolean);
+    const m=unseen(items).length?'new':dueNow(items).length?'due':'cram';secDone()[i]=true;saveNow();
+    if(m==='cram'&&!items.some(v=>seen(v.id))){toast('Nothing to practise');return}
+    startStudy(m,items,SECS[i][0])},
   theme(d){S.set.theme=d.t;save();applyTheme();openSettings()},
   back(){const v=prevView&&prevView!=='me'?prevView:'home';go(v,prevVp)},
   goal(){openGoal()},
